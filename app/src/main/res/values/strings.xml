@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">ToiDoctor</string>
+
+    <!--    Login-->
+    <string name="text.sign_in">Đăng nhập</string>
+    <string name="text.sign_up">Đăng ký tài khoản</string>
+    <string name="text.your_info">Thông tin của bạn</string>
+    <string name="text.verification_code">Mã xác nhận</string>
+    <string name="text.phone_number">Số điện thoại</string>
+    <string name="text.enter_password">Nhập mật khẩu</string>
+    <string name="text.re_enter_password">Nhập lại mật khẩu</string>
+    <string name="text.dont_have_account">Chưa có tài khoản?</string>
+    <string name="text.have_account">Đã có tài khoản?</string>
+    <string name="agree_terms">Tôi đồng ý với mọi điều khoản sử dụng</string>
+
+    <string name="text_link.forgot_password">Quên mật khẩu?</string>
+    <string name="text_link.sign_up">Đăng kí</string>
+    <string name="text_link.sign_in">Đăng nhập</string>
+    <string name="text_link.continue">Tiếp tục</string>
+    <string name="text_link.verification">Xác nhận</string>
+    <string name="text_link.resend_verification_code">Gửi lại mã xác nhận</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

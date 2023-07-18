@@ -27,4 +27,10 @@
         <item name="android:textColor">@color/primary_1</item>
     </style>
 
+<!--    EditText-->
+    <style name="EditText">
+        <item name="boxBackgroundColor">@color/gray_3</item>
+        <item name="android:textColorHint">@color/gray_2</item>
+    </style>
+
 </resources>
