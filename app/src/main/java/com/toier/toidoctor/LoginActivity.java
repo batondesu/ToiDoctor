@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 switch (typeFragment) {
                     case SIGN_IN:
+                        transactionToMainHome();
                         break;
                     case SIGN_UP:
                         transactionToFragment(TypeFragment.INFO);
@@ -53,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                         transactionToFragment(TypeFragment.VERIFICATION_CODE);
                         break;
                     case VERIFICATION_CODE:
+                        transactionToMainHome();
                         break;
                 }
             }
@@ -71,6 +74,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void transactionToMainHome() {
+        Intent intent = new Intent(LoginActivity.this, MainHomeActivity.class);
+        startActivity(intent);
     }
 
     private void transactionToFragment(TypeFragment newTypeFragment) {
