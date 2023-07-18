@@ -271,23 +271,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/all_dr"
+    <Button
+        android:id="@+id/allButton_pt"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="410dp"
-        android:layout_marginRight="15dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="15dp"
+        android:background="#00FFFFFF"
         android:text="Tất cả"
         android:textAppearance="@style/TextView.Primary"
-        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -311,10 +313,18 @@
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="129dp"
-                android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/bookingClinic1">
 
                 <View
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
                     android:layout_width="118dp"
                     android:layout_height="98dp"
                     android:layout_alignParentLeft="true"
@@ -326,26 +336,40 @@
                     android:layout_width="109dp"
                     android:layout_height="69dp"
                     android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.448"
                     app:srcCompat="@drawable/booking"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="9dp"
-                    tools:layout_editor_absoluteY="16dp" />
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/booking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Đặt lịch khám"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="20dp"
-                    tools:layout_editor_absoluteY="73dp" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.400"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.9"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="129dp"
-                android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
                 <View
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
                     android:layout_width="118dp"
                     android:layout_height="98dp"
                     android:layout_alignParentLeft="true"
@@ -357,26 +381,40 @@
                     android:layout_width="51dp"
                     android:layout_height="50dp"
                     android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.333"
                     app:srcCompat="@drawable/patient"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="39dp"
-                    tools:layout_editor_absoluteY="16dp" />
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/patient"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bệnh án"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="39dp"
-                    tools:layout_editor_absoluteY="74dp" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.493"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.9"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="129dp"
-                android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
                 <View
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
                     android:layout_width="118dp"
                     android:layout_height="98dp"
                     android:layout_alignParentLeft="true"
@@ -388,12 +426,21 @@
                     android:layout_width="67dp"
                     android:layout_height="63dp"
                     android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.2"
                     app:srcCompat="@drawable/profile"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="29dp"
-                    tools:layout_editor_absoluteY="10dp" />
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.493"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.9"
                     android:id="@+id/profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

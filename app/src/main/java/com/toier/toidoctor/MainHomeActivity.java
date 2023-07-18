@@ -1,30 +1,55 @@
 package com.toier.toidoctor;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 
+class Product {
+    String name;
+    String major;
+    double rate;
+    int review;
+    int doctor_ID;
 
+    public Product(String name, String major, int review, double rate, int doctor_ID) {
+        this.name = name;
+        this.rate = rate;
+        this.major = major;
+        this.review = review;
+        this.doctor_ID = doctor_ID;
+    }
 
-public class MainActivity extends AppCompatActivity {
+}
 
+public class MainHomeActivity extends AppCompatActivity {
+
+    private Button button;
+    private  ConstraintLayout booking;
     ArrayList<Product> listProduct;
-    ProductListViewAdapter productListViewAdapter;
+    MainHomeActivity.ProductListViewAdapter productListViewAdapter;
     ListView listViewProduct;
 
+    @SuppressLint("MissingInflatedId")
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_doctors);
+        setContentView(R.layout.activity_main_home);
+
+        button = (Button)findViewById(R.id.allButton_pt);
+        booking = (ConstraintLayout) findViewById(R.id.bookingClinic1);
 
         listProduct = new ArrayList<>();
         listProduct.add(new Product("Dr. Đỗ Duy Chiến", "Khoa nhi", 44, 4.8 , 1));
@@ -45,12 +70,25 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Product product = (Product) productListViewAdapter.getItem(position);
                 //Làm gì đó khi chọn sản phẩm (ví dụ tạo một Activity hiện thị chi tiết, biên tập ..)
-                Toast.makeText(MainActivity.this, product.name, Toast.LENGTH_LONG).show();
+                Toast.makeText(MainHomeActivity.this, product.name, Toast.LENGTH_LONG).show();
             }
         });
 
+        booking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainHomeActivity.this, ListDoctorActivity.class);
+                startActivity(intent);
+            }
+        });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainHomeActivity.this, ListDoctorActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-
     class ProductListViewAdapter extends BaseAdapter {
 
         //Dữ liệu liên kết bởi Adapter là một mảng các sản phẩm
@@ -73,10 +111,11 @@ public class MainActivity extends AppCompatActivity {
             return listProduct.get(position);
         }
 
-        public long getItemId(int position) {
-            //Trả về một ID của phần
-            return listProduct.get(position).doctor_ID;
+        @Override
+        public long getItemId(int i) {
+            return 0;
         }
+
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
