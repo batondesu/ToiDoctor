@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ToiDoctor</string>
+    <string name="filter_button">FilterButton</string>
+    <string name="patientProfile">Hồ sơ bệnh án</string>
+    <string name="All">All</string>
+
 </resources>

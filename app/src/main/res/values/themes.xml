@@ -14,7 +14,22 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
-<!--    TextView-->
+    <style name="Button.Secondary" parent="Widget.MaterialComponents.Button">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerRadius">@dimen/corner_radius</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+
+    </style>
+    <style name="CustomSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:background">@drawable/custom_searchview_background</item>
+        <item name="android:editTextColor">@color/black</item>
+        <item name="android:textColorHint">@color/black</item>
+
+    </style>
+
+
+    <!--    TextView-->
     <style name="TextView.Primary" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">@color/gray_1</item>
@@ -26,5 +41,6 @@
     <style name="TextView.Secondary.Link" parent="TextView.Secondary">
         <item name="android:textColor">@color/primary_1</item>
     </style>
+
 
 </resources>
