@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".BookingClinicActivity">
 
     <Button
         android:id="@+id/buttonBack"
@@ -88,21 +89,6 @@
             android:contentDescription="@string/button_image_message" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="320dp"
-        android:layout_marginTop="60dp"
-        android:clickable="true"
-        android:focusable="true">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/dot"
-            android:contentDescription="@string/button_image_dot" />
-    </LinearLayout>
-
     <TextView
         android:layout_width="150dp"
         android:layout_height="33dp"
@@ -117,14 +103,14 @@
         android:layout_marginTop="165dp"
         android:layout_marginStart="10dp"
         android:contentDescription="@string/todooo" />
-    
+
     <TextView
         android:layout_width="79dp"
         android:layout_height="33dp"
         android:text="@string/schedule"
         android:layout_marginStart="30dp"
         android:layout_marginTop="260dp" />
-    
+
     <TextView
         android:layout_width="79dp"
         android:layout_height="33dp"
@@ -133,7 +119,7 @@
         android:layout_marginTop="280dp"
         android:textSize = "18sp"
         android:textColor="@color/black" />
-    
+
     <TextView
         android:layout_width="150dp"
         android:layout_height="50dp"
@@ -188,14 +174,6 @@
         android:layout_height = "34dp"
         android:layout_marginStart = "280dp"
         android:layout_marginTop = "430dp" />
-
-    <ImageView
-        android:src = "@drawable/map"
-        android:layout_width = "400dp"
-        android:layout_height = "100dp"
-        android:layout_marginStart = "30dp"
-        android:layout_marginTop = "470dp"
-        android:contentDescription="@string/map_image" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip_group_dates"
