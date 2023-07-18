@@ -37,7 +37,8 @@ class Product {
 public class MainHomeActivity extends AppCompatActivity {
 
     private Button button;
-    private  ConstraintLayout booking;
+    private ConstraintLayout booking;
+    private ConstraintLayout medicalRecord;
     ArrayList<Product> listProduct;
     MainHomeActivity.ProductListViewAdapter productListViewAdapter;
     ListView listViewProduct;
@@ -50,6 +51,7 @@ public class MainHomeActivity extends AppCompatActivity {
 
         button = (Button)findViewById(R.id.allButton_pt);
         booking = (ConstraintLayout) findViewById(R.id.bookingClinic1);
+        medicalRecord = (ConstraintLayout) findViewById(R.id.medical_record);
 
         listProduct = new ArrayList<>();
         listProduct.add(new Product("Dr. Đỗ Duy Chiến", "Khoa nhi", 44, 4.8 , 1));
@@ -78,6 +80,14 @@ public class MainHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainHomeActivity.this, ListDoctorActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        medicalRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainHomeActivity.this, PatientProfileActivity.class);
                 startActivity(intent);
             }
         });

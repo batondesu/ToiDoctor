@@ -14,7 +14,22 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
-<!--    TextView-->
+    <style name="Button.Secondary" parent="Widget.MaterialComponents.Button">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerRadius">@dimen/corner_radius</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+
+    </style>
+    <style name="CustomSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:background">@drawable/custom_searchview_background</item>
+        <item name="android:editTextColor">@color/black</item>
+        <item name="android:textColorHint">@color/black</item>
+
+    </style>
+
+
+    <!--    TextView-->
     <style name="TextView.Primary" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">@color/gray_1</item>
@@ -50,83 +65,5 @@
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">#E0EAF9</item>
     </style>
-
-
-
-
-    <!--
-    <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <View
-                    android:layout_width="74dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/rectangle3" />
-
-                <TextView
-                    android:layout_width="57dp"
-                    android:layout_height="15dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-
-                    android:text="#mắt"
-                    android:textAppearance="@style/TextView.Secondary"
-                    android:textSize="12sp"
-                    tools:layout_editor_absoluteX="9dp"
-                    tools:layout_editor_absoluteY="5dp" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <View
-                    android:layout_width="74dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/rectangle3" />
-
-                <TextView
-                    android:layout_width="57dp"
-                    android:layout_height="15dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-
-                    android:text="#huyết áp"
-                    android:textAppearance="@style/TextView.Secondary"
-                    android:textSize="12sp"
-                    tools:layout_editor_absoluteX="9dp"
-                    tools:layout_editor_absoluteY="5dp" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <View
-                    android:layout_width="74dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/rectangle3" />
-
-                <TextView
-                    android:layout_width="57dp"
-                    android:layout_height="15dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-
-                    android:text="#khoa nhi"
-                    android:textAppearance="@style/TextView.Secondary"
-                    android:textSize="12sp"
-                    tools:layout_editor_absoluteX="9dp"
-                    tools:layout_editor_absoluteY="5dp" />
-            </androidx.constraintlayout.widget.ConstraintLayout> -->
 
 </resources>
