@@ -31,12 +31,6 @@ public class VerificationCodeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setVerificationCodeUI();
         return inflater.inflate(R.layout.fragment_verification_code, container, false);
-    }
-
-    private void setVerificationCodeUI() {
-        TextView textView = getView().findViewById(R.id.text_view_code_1);
-        textView.setText(2);
     }
 }
