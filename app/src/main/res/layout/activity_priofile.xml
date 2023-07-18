@@ -5,7 +5,8 @@
     style="@style/TextView.Secondary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F6F5">
+    android:background="#F4F6F5"
+    tools:context=".PriofileActivity">
 
 
     <LinearLayout
@@ -329,18 +330,27 @@
             android:layout_height="wrap_content"
             android:text="Kết quả khám bệnh" />
 
-        <Space
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="226dp"></Space>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomMenu"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_gravity="bottom"
-            app:menu="@menu/bottom_nav_menu">
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="226dp"
+                android:layout_weight="1"
+                ></Space>
 
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomMenu"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_gravity="bottom"
+                app:menu="@menu/bottom_nav_menu">
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
