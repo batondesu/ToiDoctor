@@ -14,9 +14,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+class Product {
+    String name;
+    String major;
+    double rate;
+    int review;
+    int doctor_ID;
 
+    public Product(String name, String major, int review, double rate, int doctor_ID) {
+        this.name = name;
+        this.rate = rate;
+        this.major = major;
+        this.review = review;
+        this.doctor_ID = doctor_ID;
+    }
 
-public class MainActivity extends AppCompatActivity {
+}
+
+public class ListDoctor extends AppCompatActivity {
 
     ArrayList<Product> listProduct;
     ProductListViewAdapter productListViewAdapter;
@@ -45,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Product product = (Product) productListViewAdapter.getItem(position);
                 //Làm gì đó khi chọn sản phẩm (ví dụ tạo một Activity hiện thị chi tiết, biên tập ..)
-                Toast.makeText(MainActivity.this, product.name, Toast.LENGTH_LONG).show();
+                Toast.makeText(ListDoctor.this, product.name, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -73,10 +88,11 @@ public class MainActivity extends AppCompatActivity {
             return listProduct.get(position);
         }
 
-        public long getItemId(int position) {
-            //Trả về một ID của phần
-            return listProduct.get(position).doctor_ID;
+        @Override
+        public long getItemId(int i) {
+            return 0;
         }
+
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {

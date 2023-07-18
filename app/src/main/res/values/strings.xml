@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">ToiDoctor</string>
+
+    <string name="headtext">
+        Chào Mừng Trở Lại
+    </string>
+
+    <string name="doctor">
+        Dr. Đào Duy Chiến
+    </string>
+
+    <string name="majors">
+        Khoa nhi
+    </string>
+
+    <string name="lichhen">
+        Lịch hẹn của bạn
+    </string>
+
+    <string name="all">
+        Tất cả
+    </string>
+
+    <string name="rate">
+        4.8
+    </string>
+
+    <string name="review">
+        (44 Đánh giá)
+    </string>
+
+    <string name="chuyenhuong">
+        Chuyển hướng
+    </string>
+
+    <string name="back">
+        Back
+    </string>
 </resources>
