@@ -1,1 +1,93 @@
-<resources></resources>
+
+<resources>
+    <string name="app_name">ToiDoctor</string>
+
+    <!--    Login-->
+    <string name="text.sign_in">Đăng nhập</string>
+    <string name="text.sign_up">Đăng ký tài khoản</string>
+    <string name="text.your_info">Thông tin của bạn</string>
+    <string name="text.verification_code">Mã xác nhận</string>
+    <string name="text.phone_number">Số điện thoại</string>
+    <string name="text.enter_password">Nhập mật khẩu</string>
+    <string name="text.re_enter_password">Nhập lại mật khẩu</string>
+    <string name="text.dont_have_account">Chưa có tài khoản?</string>
+    <string name="text.have_account">Đã có tài khoản?</string>
+    <string name="agree_terms">Tôi đồng ý với mọi điều khoản sử dụng</string>
+
+    <string name="text_link.forgot_password">Quên mật khẩu?</string>
+    <string name="text_link.sign_up">Đăng kí</string>
+    <string name="text_link.sign_in">Đăng nhập</string>
+    <string name="text_link.continue">Tiếp tục</string>
+    <string name="text_link.verification">Xác nhận</string>
+    <string name="text_link.resend_verification_code">Gửi lại mã xác nhận</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="headtext">
+        Chào Mừng Trở Lại
+    </string>
+
+    <string name="doctor">
+        Dr. Đào Duy Chiến
+    </string>
+
+    <string name="majors">
+        Khoa nhi
+    </string>
+
+    <string name="lichhen">
+        Lịch hẹn của bạn
+    </string>
+
+    <string name="all">
+        Tất cả
+    </string>
+
+    <string name="rate">
+        4.8
+    </string>
+
+    <string name="review">
+        (44 Đánh giá)
+    </string>
+
+    <string name="chuyenhuong">
+        Chuyển hướng
+    </string>
+
+    <string name="back">
+        Back
+    </string>
+    <string name="filter_button">FilterButton</string>
+    <string name="patientProfile">Hồ sơ bệnh án</string>
+    <string name="All">All</string>
+    <string name="about">About</string>
+    <string name="about_a_doctor">About a doctor</string>
+    <string name="button_image">Button Image</string>
+    <string name="button_image_dot">Button Image</string>
+    <string name="button_image_message">Button Image</string>
+    <string name="chon_lich">Chọn lịch</string>
+    <string name="dr_do_duy_chien">Dr. Đỗ Duy Chiến</string>
+    <string name="hospital">Bệnh viện Cầu Giấy</string>
+    <string name="hospital_image">TODO</string>
+    <string name="introduce">Đỗ Duy Chiến là bác sĩ dày dặn kinh nghiệm trong lĩnh vực khoa nhi</string>
+    <string name="khoa_nhi">Khoa nhi</string>
+    <string name="location">Location</string>
+    <string name="location_image">TODO</string>
+    <string name="location_r">2A, ngách 15 ngõ 117, đường Trần Cung</string>
+    <string name="map_image">TODO</string>
+    <string name="schedule">Schedule</string>
+    <string name="todo">TODO</string>
+    <string name="todo_avt">TODO</string>
+    <string name="todoo">TODO</string>
+    <string name="todooo">TODO</string>
+</resources>

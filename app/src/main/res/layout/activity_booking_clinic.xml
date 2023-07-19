@@ -255,10 +255,10 @@
         tools:ignore="UsingOnClickInXml">
 
         <ImageView
+            android:id="@+id/tao_lich_hen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/make_appointment"
-            android:contentDescription="@string/button_image_message" />
+            android:src="@drawable/make_appointment"/>
     </LinearLayout>
 
 

@@ -12,12 +12,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ToiDoctor"
         tools:targetApi="31">
-
+        <activity
+            android:name=".MainHomeActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
+            android:name=".ListDoctorActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".AppointmentActivity"
             android:exported="false" />
         <activity
             android:name=".BookingClinicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PatientProfileActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

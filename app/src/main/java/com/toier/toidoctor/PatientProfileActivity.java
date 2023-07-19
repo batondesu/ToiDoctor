@@ -6,21 +6,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
-public class AppointmentActivity extends AppCompatActivity {
+public class PatientProfileActivity extends AppCompatActivity {
     private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appointment);
+        setContentView(R.layout.activity_patient_profile);
 
-        button = (Button) findViewById(R.id.come_home);
-
+        button = findViewById(R.id.button11);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AppointmentActivity.this, MainHomeActivity.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientProfileActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
         });
