@@ -3,8 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AppointmentActivity">
+    android:layout_height="match_parent">
 
     <View
         android:layout_width="match_parent"
@@ -26,28 +25,27 @@
         tools:ignore="UsingOnClickInXml" />
 
     <ImageView
-        android:src="@drawable/tienmatlol"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="20dp"
+        android:src="@drawable/logo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="35dp"
         />
 
     <TextView
-        android:text="ToiDoctor"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="50dp"
-        android:textSize="20sp"
-        />
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="55dp"
+        android:text="ToiDoctor"
+        android:textSize="20sp" />
 
     <TextView
         android:text="Thành công"
         android:layout_width="150dp"
         android:layout_height="30dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="100dp"
         android:textSize="24sp"
         />
 
@@ -55,8 +53,8 @@
         android:src="@drawable/tick"
         android:layout_width="80dp"
         android:layout_height="60dp"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="140dp"
         />
 
     <TextView
@@ -70,8 +68,8 @@
 
     <ImageView
         android:id="@+id/avt"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="300dp"
         android:src="@drawable/avt"
@@ -81,20 +79,20 @@
         android:id="@+id/textView"
         android:layout_width="150dp"
         android:layout_height="33dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="115dp"
         android:layout_marginTop="300dp"
         android:text="@string/dr_do_duy_chien"
-        android:textSize = "14sp"
+        android:textSize = "16sp"
         />
 
     <TextView
         android:id="@+id/khoanhi"
         android:layout_width="150dp"
         android:layout_height="33dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="115dp"
         android:layout_marginTop="320dp"
         android:text="@string/khoa_nhi"
-        android:textSize = "12sp"
+        android:textSize = "14sp"
 
         />
 
@@ -104,61 +102,24 @@
         android:layout_marginStart="250dp"
         android:layout_marginTop="300dp"
         android:text="44 đánh giá"
-        android:textSize = "12sp"
+        android:textSize = "14sp"
 
         />
 
     <ImageView
         android:id="@+id/vote"
         android:src = "@drawable/vote"
-        android:layout_width="51dp"
-        android:layout_height="26dp"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
         android:layout_marginStart="330dp"
         android:layout_marginTop="295dp"
         android:contentDescription="@string/todoo" />
-
-    <TextView
-        android:text="Ngày:"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="360dp"
-        android:textSize="20sp"
-        android:textColor="@color/black" />
-
-    <TextView
-        android:text="17/07/2023"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="400dp"
-        android:textSize="16sp"
-        android:textColor="@color/black" />
-
-    <TextView
-        android:text="Thời gian:"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="360dp"
-        android:textSize="20sp"
-        android:textColor="@color/black" />
-
-    <TextView
-        android:text="14:00"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="400dp"
-        android:textSize="16sp"
-        android:textColor="@color/black" />
-
     <TextView
         android:text="Địa chỉ:"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="500dp"
         android:textSize="20sp"
         android:textColor="@color/black" />
 
@@ -167,7 +128,7 @@
         android:layout_width = "24dp"
         android:layout_height = "24dp"
         android:layout_marginStart = "30dp"
-        android:layout_marginTop = "480dp"
+        android:layout_marginTop = "550dp"
         android:contentDescription="@string/location_image" />
 
     <TextView
@@ -175,14 +136,14 @@
         android:layout_width = "147dp"
         android:layout_height = "34dp"
         android:layout_marginStart = "60dp"
-        android:layout_marginTop = "480dp" />
+        android:layout_marginTop = "550dp" />
 
     <ImageView
         android:src = "@drawable/hospital"
         android:layout_width = "24dp"
         android:layout_height = "24dp"
         android:layout_marginStart = "250dp"
-        android:layout_marginTop = "480dp"
+        android:layout_marginTop = "550dp"
         android:contentDescription="@string/hospital_image" />
 
     <TextView
@@ -190,17 +151,35 @@
         android:layout_width = "147dp"
         android:layout_height = "34dp"
         android:layout_marginStart = "280dp"
-        android:layout_marginTop = "480dp" />
+        android:layout_marginTop = "550dp" />
 
     <Button
-        android:id="@+id/come_home"
+        android:id="@+id/tro_ve_trang_chu"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="600dp"
-        android:text="Trở về trang chủ" />
+        android:text="Trở về trang chủ"
+        android:textAllCaps="false"
+        android:textColor="@color/white"/>
 
+    <TextView
+        android:id="@+id/tvDisplayDateTime"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="400dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        />
 
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="460dp"
+        android:text="(Hệ thống tự chuyển đổi thời gian bạn chọn đến mốc thời gian phù hợp gần nhất)"
+        android:textSize="12sp" />
 
 
 </RelativeLayout>

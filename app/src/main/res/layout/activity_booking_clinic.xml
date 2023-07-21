@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".BookingClinicActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/transparent"
         android:onClick="goBack"
         android:text="@string/back"
         android:textColor="@android:color/black"
-        android:background="@android:color/transparent"
         tools:ignore="UsingOnClickInXml" />
 
     <ImageView
@@ -89,6 +91,29 @@
             android:contentDescription="@string/button_image_message" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="60dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dot"
+            android:contentDescription="@string/button_image_dot" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="140dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_height="700dp"
+        android:background="@color/gray_4" />
+
     <TextView
         android:layout_width="150dp"
         android:layout_height="33dp"
@@ -96,13 +121,88 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="140dp"/>
 
-    <ImageView
-        android:layout_width="362dp"
-        android:layout_height="87dp"
-        android:src="@drawable/about"
-        android:layout_marginTop="165dp"
-        android:layout_marginStart="10dp"
-        android:contentDescription="@string/todooo" />
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="17dp"
+        android:text="Bệnh nhân"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="160dp" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="17dp"
+        android:text="Kinh nghiệm"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="160dp" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="17dp"
+        android:text="Đánh giá"
+        android:layout_marginStart="285dp"
+        android:layout_marginTop="160dp" />
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="190dp"
+        android:background="@color/gray_3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+233"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="190dp"
+        android:background="@color/gray_3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+14 years"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_marginStart="270dp"
+        android:layout_marginTop="190dp"
+        android:background="@color/gray_3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.8*"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+
 
     <TextView
         android:layout_width="79dp"
@@ -111,15 +211,13 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="260dp" />
 
-    <TextView
-        android:layout_width="79dp"
-        android:layout_height="33dp"
-        android:text="@string/chon_lich"
-        android:layout_marginStart = "30dp"
+    <Button
+        android:id="@+id/booking"
+        android:layout_height="60dp"
+        android:layout_width="350dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="280dp"
-        android:textSize = "18sp"
-        android:textColor="@color/black" />
-
+        android:text="Đặt lịch khám tại đây" />
     <TextView
         android:layout_width="150dp"
         android:layout_height="50dp"
@@ -150,7 +248,7 @@
         android:layout_width = "24dp"
         android:layout_height = "24dp"
         android:layout_marginStart = "30dp"
-        android:layout_marginTop = "430dp"
+        android:layout_marginTop = "445dp"
         android:contentDescription="@string/location_image" />
 
     <TextView
@@ -158,14 +256,14 @@
         android:layout_width = "147dp"
         android:layout_height = "34dp"
         android:layout_marginStart = "60dp"
-        android:layout_marginTop = "430dp" />
+        android:layout_marginTop = "445dp" />
 
     <ImageView
         android:src = "@drawable/hospital"
         android:layout_width = "24dp"
         android:layout_height = "24dp"
         android:layout_marginStart = "250dp"
-        android:layout_marginTop = "430dp"
+        android:layout_marginTop = "445dp"
         android:contentDescription="@string/hospital_image" />
 
     <TextView
@@ -173,93 +271,22 @@
         android:layout_width = "147dp"
         android:layout_height = "34dp"
         android:layout_marginStart = "280dp"
-        android:layout_marginTop = "430dp" />
+        android:layout_marginTop = "445dp" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group_dates"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:layout_marginStart="30dp"
-        app:chipSpacing="8dp"
-        app:singleLine="true">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_date_1"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="17/07"
-            android:background="@drawable/chip_selected"
-            android:textColor="@color/chip_text_color"
-            android:checked="false" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_date_2"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="18/07"
-            android:background="@drawable/chip_selected"
-            android:textColor="@color/chip_text_color"
-            android:checked="false" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_date_3"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="19/07"
-            android:background="@drawable/chip_selected"
-            android:textColor="@color/chip_text_color"
-            android:checked="false" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_date_4"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="20/07"
-            android:background="@drawable/chip_selected"
-            android:textColor="@color/chip_text_color"
-            android:checked="false" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_date_5"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="21/07"
-            android:background="@drawable/chip_selected"
-            android:textColor="@color/chip_text_color"
-            android:checked="false" />
-
-
-
-    </com.google.android.material.chip.ChipGroup>
-
-    <TextView
-        android:text="Make appointment"
-        android:layout_width = "147dp"
-        android:layout_height = "30dp"
+    <ImageView
+        android:src = "@drawable/map"
+        android:layout_width = "500dp"
+        android:layout_height = "200dp"
         android:layout_marginStart = "30dp"
-        android:layout_marginTop = "580dp" />
+        android:layout_marginTop = "470dp"
+        android:contentDescription="@string/map_image" />
 
-    <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="-15dp"
-        android:layout_marginTop="600dp"
-        android:clickable="true"
-        android:focusable="true"
-        tools:ignore="UsingOnClickInXml">
-
-        <ImageView
-            android:id="@+id/tao_lich_hen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/make_appointment"/>
-    </LinearLayout>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/dot_location"
+        android:layout_marginTop="550dp"
+        android:layout_marginStart="210dp" />
 
 
 

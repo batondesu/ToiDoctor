@@ -23,15 +23,45 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
+
+
         <activity
             android:name=".AppointmentActivity"
-            android:exported="false" />
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+            />
+        </activity>
+
         <activity
             android:name=".BookingClinicActivity"
-            android:exported="false" />
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+            />
+        </activity>
+
         <activity
             android:name=".PatientProfileActivity"
-            android:exported="false"/>
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+            />
+        </activity>
+
+
         <activity
             android:name=".LoginActivity"
             android:windowSoftInputMode="adjustPan"
