@@ -22,45 +22,24 @@
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
 
 
         <activity
             android:name=".AppointmentActivity"
-            android:exported="true" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
-            />
-        </activity>
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true" />
 
         <activity
             android:name=".BookingClinicActivity"
-            android:exported="true" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
-            />
-        </activity>
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true" />
 
         <activity
             android:name=".PatientProfileActivity"
-            android:exported="true" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
-            />
-        </activity>
-
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true" />
 
         <activity
             android:name=".LoginActivity"
