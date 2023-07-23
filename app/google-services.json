@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "186182284049",
+    "firebase_url": "https://toidoctor-a8efe-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "toidoctor-a8efe",
+    "storage_bucket": "toidoctor-a8efe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186182284049:android:d7f770743bf463faf0d2b0",
+        "android_client_info": {
+          "package_name": "com.toier.toidoctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186182284049-bnnafrneq8kf356ieku5bjis59tiiuvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb4HKaBkSXAkvpBhgI7AmsPx9RB9cSeec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186182284049-bnnafrneq8kf356ieku5bjis59tiiuvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
