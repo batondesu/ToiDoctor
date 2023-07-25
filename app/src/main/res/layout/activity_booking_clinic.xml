@@ -24,7 +24,7 @@
         android:id="@+id/avt"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="50dp"
         android:src="@drawable/avt"
         android:contentDescription="@string/todo_avt" />
@@ -34,12 +34,12 @@
         android:src = "@drawable/vote"
         android:layout_width="51dp"
         android:layout_height="26dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="106dp"
         android:contentDescription="@string/todoo" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/doctor_name"
         android:layout_width="150dp"
         android:layout_height="33dp"
         android:layout_marginStart="124dp"
@@ -49,7 +49,7 @@
         />
 
     <TextView
-        android:id="@+id/khoanhi"
+        android:id="@+id/doctor_major"
         android:layout_width="150dp"
         android:layout_height="33dp"
         android:layout_marginStart="124dp"
@@ -91,21 +91,6 @@
             android:contentDescription="@string/button_image_message" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="320dp"
-        android:layout_marginTop="60dp"
-        android:clickable="true"
-        android:focusable="true">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/dot"
-            android:contentDescription="@string/button_image_dot" />
-    </LinearLayout>
-
     <View
         android:layout_width="match_parent"
         android:layout_marginTop="140dp"
@@ -118,21 +103,21 @@
         android:layout_width="150dp"
         android:layout_height="33dp"
         android:text = "@string/about"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="140dp"/>
 
     <TextView
         android:layout_width="80dp"
         android:layout_height="17dp"
         android:text="Bệnh nhân"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="160dp" />
 
     <TextView
         android:layout_width="80dp"
         android:layout_height="17dp"
         android:text="Kinh nghiệm"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="145dp"
         android:layout_marginTop="160dp" />
 
     <TextView
@@ -151,9 +136,10 @@
         android:background="@color/gray_3">
 
         <TextView
+            android:id="@+id/count_patient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+233"
+
             android:gravity="center"
             android:layout_gravity="center"
             android:textColor="@color/black"
@@ -171,9 +157,10 @@
         android:background="@color/gray_3">
 
         <TextView
+            android:id="@+id/count_exp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+14 years"
+
             android:gravity="center"
             android:layout_gravity="center"
             android:textColor="@color/black"
@@ -191,9 +178,10 @@
         android:background="@color/gray_3">
 
         <TextView
+            android:id="@+id/doctor_rate1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4.8*"
+
             android:gravity="center"
             android:layout_gravity="center"
             android:textColor="@color/black"
@@ -203,13 +191,12 @@
     </LinearLayout>
 
 
-
     <TextView
         android:layout_width="79dp"
         android:layout_height="33dp"
-        android:text="@string/schedule"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="260dp" />
+        android:layout_marginTop="260dp"
+        android:text="@string/schedule" />
 
     <Button
         android:id="@+id/booking"
@@ -218,28 +205,30 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="280dp"
         android:text="Đặt lịch khám tại đây" />
+
     <TextView
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:text="@string/about_a_doctor"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="420dp"
         android:textColor="@color/black"
         android:textSize="16sp"/>
 
     <TextView
+        android:id="@+id/about_doctor"
         android:layout_width="362dp"
         android:layout_height="34dp"
-        android:text="@string/introduce"
+
         android:layout_marginStart="30dp"
-        android:layout_marginTop="370dp" />
+        android:layout_marginTop="440dp" />
 
     <TextView
         android:layout_width="100dp"
         android:layout_height="33dp"
         android:text="@string/location"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="410dp"
+        android:layout_marginTop="480dp"
         android:textColor="@color/black"
         android:textSize="16sp"/>
 
@@ -248,49 +237,53 @@
         android:layout_width = "24dp"
         android:layout_height = "24dp"
         android:layout_marginStart = "30dp"
-        android:layout_marginTop = "445dp"
+        android:layout_marginTop = "515dp"
         android:contentDescription="@string/location_image" />
 
     <TextView
-        android:text="@string/location_r"
+        android:id="@+id/address"
+
         android:layout_width = "147dp"
         android:layout_height = "34dp"
         android:layout_marginStart = "60dp"
-        android:layout_marginTop = "445dp" />
+        android:layout_marginTop = "515dp" />
 
     <ImageView
         android:src = "@drawable/hospital"
         android:layout_width = "24dp"
         android:layout_height = "24dp"
         android:layout_marginStart = "250dp"
-        android:layout_marginTop = "445dp"
+        android:layout_marginTop = "515dp"
         android:contentDescription="@string/hospital_image" />
 
     <TextView
-        android:text="@string/hospital"
+        android:id="@+id/hospital_name"
+
         android:layout_width = "147dp"
         android:layout_height = "34dp"
         android:layout_marginStart = "280dp"
-        android:layout_marginTop = "445dp" />
+        android:layout_marginTop = "515dp" />
 
     <ImageView
-        android:src = "@drawable/map"
-        android:layout_width = "500dp"
-        android:layout_height = "200dp"
-        android:layout_marginStart = "30dp"
-        android:layout_marginTop = "470dp"
-        android:contentDescription="@string/map_image" />
+        android:layout_width="500dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="540dp"
+        android:contentDescription="@string/map_image"
+        android:src="@drawable/map" />
 
     <ImageView
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/dot_location"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="620dp"
         android:layout_marginStart="210dp" />
 
-
-
-
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="360dp"
+        android:layout_marginStart="15dp"
+        />
 
 </RelativeLayout>
