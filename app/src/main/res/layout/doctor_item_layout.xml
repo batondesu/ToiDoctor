@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/doctorImageView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/avt"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/doctorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:textSize="16sp"
+            android:text="Tên bác sĩ" />
+
+        <TextView
+            android:id="@+id/doctorDepartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/doctorName"
+            android:layout_marginStart="50dp"
+            android:textSize="12sp"
+            android:text="Khoa chuyên ngành" />
+
+        <TextView
+            android:id="@+id/doctorReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="200dp"
+            android:text="Số lượng đánh giá" />
+
+        <TextView
+            android:id="@+id/doctorRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="0dp"
+            android:text="Điểm đánh giá" />
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
