@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SignUpFragment">
+    tools:context=".fragments.SignUpFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/endter_phone_number"
         style="@style/EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,13 +15,13 @@
         android:hint="Nhập số điện thoại">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/endter_phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/endter_pasword"
         style="@style/EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,13 +31,13 @@
         android:hint="Nhập mật khẩu">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/endter_pasword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/re_endter_pasword"
         style="@style/EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,13 +47,14 @@
         android:hint="Nhập lại mật khẩu">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/re_endter_pasword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
-        android:id="@+id/check_box"
+        android:id="@+id/agree_term"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

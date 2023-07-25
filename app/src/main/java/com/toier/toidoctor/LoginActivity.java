@@ -1,28 +1,23 @@
 package com.toier.toidoctor;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.toier.toidoctor.fragment.EnterInfoFragment;
-import com.toier.toidoctor.fragment.SignInFragment;
-import com.toier.toidoctor.fragment.SignUpFragment;
-import com.toier.toidoctor.fragment.VerificationCodeFragment;
-
-enum TypeFragment{
-    SIGN_IN,
-    SIGN_UP,
-    INFO,
-    VERIFICATION_CODE
-}
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.toier.toidoctor.enums.TypeFragment;
+import com.toier.toidoctor.fragments.EnterInfoFragment;
+import com.toier.toidoctor.fragments.SignInFragment;
+import com.toier.toidoctor.fragments.SignUpFragment;
+import com.toier.toidoctor.fragments.VerificationCodeFragment;
 
 public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
@@ -30,12 +25,17 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvSecondaryLogin;
     private TextView tvLinkLogin;
 
+    public FirebaseUser currentUser;//used to store current user of account
+    public FirebaseAuth mAuth;//Used for firebase authentication
+
     private TypeFragment typeFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //getSupportActionBar().hide();
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
 
         btnLogin = (Button) findViewById(R.id.btn_login);
         tvPrimaryLogin = (TextView) findViewById(R.id.text_view_primary_login);
@@ -43,48 +43,14 @@ public class LoginActivity extends AppCompatActivity {
         tvLinkLogin = (TextView) findViewById(R.id.text_link_login);
 
         transactionToFragment(TypeFragment.SIGN_IN);
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (typeFragment) {
-                    case SIGN_IN:
-                        transactionToMainHome();
-                        break;
-                    case SIGN_UP:
-                        transactionToFragment(TypeFragment.INFO);
-                        break;
-                    case INFO:
-                        transactionToFragment(TypeFragment.VERIFICATION_CODE);
-                        break;
-                    case VERIFICATION_CODE:
-                        transactionToMainHome();
-                        break;
-                }
-            }
-        });
-
-        tvLinkLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (typeFragment) {
-                    case SIGN_IN:
-                        transactionToFragment(TypeFragment.SIGN_UP);
-                        break;
-                    case SIGN_UP:
-                        transactionToFragment(TypeFragment.SIGN_IN);
-                        break;
-                }
-            }
-        });
     }
 
-    private void transactionToMainHome() {
+    public void transactionToMainHome() {
         Intent intent = new Intent(LoginActivity.this, MainHomeActivity.class);
         startActivity(intent);
     }
 
-    private void transactionToFragment(TypeFragment newTypeFragment) {
+    public void transactionToFragment(TypeFragment newTypeFragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
         switch (newTypeFragment) {
@@ -121,4 +87,5 @@ public class LoginActivity extends AppCompatActivity {
     public TextView getTvLinkLogin() {
         return tvLinkLogin;
     }
+
 }
