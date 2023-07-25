@@ -82,18 +82,11 @@
                     <TextView
                         android:id="@+id/textView3"
                         style="@style/TextView.Primary"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="Trần Bá Toản"
                         android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Viêm tai giữa " />
 
                     <LinearLayout
                         android:layout_width="116dp"
@@ -101,7 +94,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/button17"
+                            android:id="@+id/sendMessage"
                             style="@style/Button.Primary"
                             android:layout_width="40dp"
                             android:layout_height="52dp"
@@ -112,7 +105,7 @@
                             app:iconPadding="0dp" />
 
                         <Button
-                            android:id="@+id/button18"
+                            android:id="@+id/phoneCall"
                             style="@style/Button.Primary"
                             android:layout_width="40dp"
                             android:layout_height="52dp"
@@ -261,16 +254,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="9:00"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/button12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="12:00"
+                    android:text="8:00"
                     android:textStyle="bold" />
 
                 <Button
@@ -279,34 +263,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="13:00"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/button14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="16:00"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/button15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="16:45"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/button16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="17:00"
+                    android:text="13:30"
                     android:textStyle="bold" />
 
             </LinearLayout>
