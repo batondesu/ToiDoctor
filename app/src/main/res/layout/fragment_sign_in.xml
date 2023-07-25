@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SignInFragment">
+    tools:context=".fragments.SignInFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/endter_phone_number"
         style="@style/EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,13 +16,13 @@
         android:hint="Nhập số điện thoại">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/endter_phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/endter_pasword"
         style="@style/EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,6 +32,7 @@
         android:hint="Nhập mật khẩu">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/endter_pasword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"/>
