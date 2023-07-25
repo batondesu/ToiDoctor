@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.*;
 import com.google.firebase.firestore.*;
+import com.toier.toidoctor.Appointment;
 import com.toier.toidoctor.BookingClinicActivity;
 import com.toier.toidoctor.Doctor;
 import com.toier.toidoctor.R.id;
@@ -95,5 +96,22 @@ public class BookingController {
         void onDoctorDataError(String errorMessage);
     }
 
+    public void addBookingData(String doctorId, String patientId, String schedule) {
+        // Lấy tham chiếu đến Firestore
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        // Tạo một đối tượng Booking để đưa lên Firestore
+        Appointment booking = new Appointment(doctorId, patientId, schedule);
+
+        // Thêm dữ liệu vào collection "bookings" hoặc collection tùy chọn khác
+        db.collection("Appointments") // Thay "bookings" bằng tên collection bạn muốn lưu dữ liệu
+                .add(booking)
+                .addOnSuccessListener(documentReference -> {
+                    // Xử lý thành công khi thêm dữ liệu vào Firestore
+                    // (documentReference.getId() trả về ID của tài liệu vừa được thêm)
+                })
+                .addOnFailureListener(e -> {
+                    // Xử lý lỗi nếu thêm dữ liệu không thành công
+                });
+    }
 }

@@ -28,6 +28,8 @@ import com.toier.toidoctor.PatientProfileActivity;
 import com.toier.toidoctor.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MainHomeController {
 
@@ -98,6 +100,13 @@ public class MainHomeController {
                             //Log.d("ABC", String.format("Size: %d",listDoctor.size()) );
                         }
                         //Log.d("ABC", String.format("Size: %d",listDoctor1.size()) );
+                        Collections.sort(listDoctor1, new Comparator<Doctor>() {
+                            @Override
+                            public int compare(Doctor doctor1, Doctor doctor2) {
+                                // Sử dụng Double.compare() để so sánh hai giá trị Double (rate)
+                                return Double.compare(doctor2.getRate(), doctor1.getRate());
+                            }
+                        });
                         ListDoctor listDoctorAdapter = new ListDoctor(context, listDoctor1);
                         listView.setAdapter(listDoctorAdapter);
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

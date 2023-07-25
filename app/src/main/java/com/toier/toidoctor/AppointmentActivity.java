@@ -22,14 +22,12 @@ public class AppointmentActivity extends AppCompatActivity {
         this.setContentView(layout.activity_appointment);
         this.tvDisplayDateTime = (TextView)this.findViewById(id.tvDisplayDateTime);
         Intent intent = this.getIntent();
-        if (intent != null) {
-            String selectedDateTime = intent.getStringExtra("SELECTED_DATE_TIME");
-
-            Log.d("QWE", "=>" + selectedDateTime);
-            if (selectedDateTime != null) {
-                this.tvDisplayDateTime.setText("Ngày hẹn khám của bạn: \n" + selectedDateTime);
-            }
+        String selectedDateTime = intent.getStringExtra("SELECTED_DATE_TIME");
+        //Log.d("QWE", "=>" + selectedDateTime);
+        if (selectedDateTime != null) {
+            this.tvDisplayDateTime.setText("Ngày hẹn khám của bạn: \n" + selectedDateTime);
         }
+
 
         Button button_back_main_activity = findViewById(R.id.tro_ve_trang_chu);
         button_back_main_activity.setOnClickListener(new View.OnClickListener() {
@@ -40,45 +38,45 @@ public class AppointmentActivity extends AppCompatActivity {
         });
 
 
+        String ID = getIntent().getStringExtra("ID_DOCTOR");
+        Log.d("QWE", ID);
+        booking.getDoctorData(ID, new BookingController.OnDoctorDataListener() {
+            @Override
+            public void onDoctorDataReceived(Doctor doctor) {
+                // Hiển thị tên của Doctor vào TextView
+                TextView tvDoctorName = findViewById(id.sc_name);
+                tvDoctorName.setText(doctor.getName());
 
+                TextView tvDoctorMajor = findViewById(id.sc_major);
+                tvDoctorMajor.setText(doctor.getMajor());
 
-            String ID = getIntent().getStringExtra("ID_DOCTOR");
-            Log.d("QWE", ID);
-            booking.getDoctorData(ID, new BookingController.OnDoctorDataListener() {
-                @Override
-                public void onDoctorDataReceived(Doctor doctor) {
-                    // Hiển thị tên của Doctor vào TextView
-                    TextView tvDoctorName = findViewById(id.sc_name);
-                    tvDoctorName.setText(doctor.getName());
+                //TextView tvDoctorPatient = findViewById(id.sc);
+                //tvDoctorPatient.setText(String.format("+%d",doctor.getPatient()));
 
-                    TextView tvDoctorMajor = findViewById(id.sc_major);
-                    tvDoctorMajor.setText(doctor.getMajor());
+                TextView tvDoctorReview = findViewById(id.sc_review);
+                tvDoctorReview.setText(String.format("%d Đánh giá",doctor.getReview()));
 
-                    //TextView tvDoctorPatient = findViewById(id.sc);
-                    //tvDoctorPatient.setText(String.format("+%d",doctor.getPatient()));
+                TextView tvDoctorRate = findViewById(id.sc_rate);
+                tvDoctorRate.setText(String.format("%.1f",doctor.getRate()));
 
-                    TextView tvDoctorReview = findViewById(id.sc_review);
-                    tvDoctorReview.setText(String.format("%d Đánh giá",doctor.getReview()));
+                TextView tvDoctorAbout = findViewById(id.about_doctor);
+                //tvDoctorAbout.setText(doctor.getAbout_doctor());
 
-                    TextView tvDoctorRate = findViewById(id.sc_rate);
-                    tvDoctorRate.setText(String.format("%.1f",doctor.getRate()));
+                TextView tvDoctorAddress = findViewById(id.address);
+                //tvDoctorName.setText(doctor.getAddress());
 
-                    TextView tvDoctorAbout = findViewById(id.about_doctor);
-                    //tvDoctorAbout.setText(doctor.getAbout_doctor());
+                TextView tvDoctorHospital = findViewById(id.hospital_name);
+                //tvDoctorName.setText(doctor.getHospital_name());
 
-                    TextView tvDoctorAddress = findViewById(id.address);
-                    //tvDoctorName.setText(doctor.getAddress());
+            }
 
-                    TextView tvDoctorHospital = findViewById(id.hospital_name);
-                    //tvDoctorName.setText(doctor.getHospital_name());
+            @Override
+            public void onDoctorDataError(String errorMessage) {
+                // Xử lý lỗi nếu có
+            }
+        });
 
-                }
-
-                @Override
-                public void onDoctorDataError(String errorMessage) {
-                    // Xử lý lỗi nếu có
-                }
-            });
-        }
+        booking.addBookingData(ID, "1", selectedDateTime);
+    }
 
 }
