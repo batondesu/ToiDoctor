@@ -95,6 +95,7 @@ public class ListDoctorActivity extends AppCompatActivity {
 
         builder.show();
     }
+    // ....
 
     private void showDoctorsList(QueryDocumentSnapshot selectedHospital, QueryDocumentSnapshot selectedDepartment) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
