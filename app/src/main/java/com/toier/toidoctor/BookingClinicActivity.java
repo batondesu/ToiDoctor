@@ -9,25 +9,83 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.*;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.*;
+import com.google.firebase.firestore.*;
+import com.toier.toidoctor.Controller.BookingController;
 import com.toier.toidoctor.R.id;
 import com.toier.toidoctor.R.layout;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
+
 
 public class BookingClinicActivity extends AppCompatActivity {
+    private static final String TAG = "MyApp";
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
     private SimpleDateFormat timeFormat;
-    private TextView tvSelectedDateTime;
+    private TextView textView;
+    private String ID;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(layout.activity_booking_clinic);
+
+        BookingController booking = new BookingController(this);
+        Intent intent = this.getIntent();
+        ID = intent.getStringExtra("KEY_VALUE");
+
+        if (intent != null) {
+            Log.d("ACB", ID);
+            booking.getDoctorData(ID, new BookingController.OnDoctorDataListener() {
+                @Override
+                public void onDoctorDataReceived(Doctor doctor) {
+                    // Hiển thị tên của Doctor vào TextView
+                    TextView tvDoctorName = findViewById(id.doctor_name);
+                    tvDoctorName.setText(doctor.getName());
+
+                    TextView tvDoctorMajor = findViewById(id.doctor_major);
+                    tvDoctorMajor.setText(doctor.getMajor());
+
+                    TextView tvDoctorPatient = findViewById(id.count_patient);
+                    tvDoctorPatient.setText(String.format("+%d",doctor.getPatient()));
+
+                    TextView tvDoctorExp = findViewById(id.count_exp);
+                    tvDoctorExp.setText(String.format("+%d years",doctor.getExp()));
+
+                    TextView tvDoctorRate = findViewById(id.doctor_rate1);
+                    tvDoctorRate.setText(String.format("%.1f",doctor.getRate()));
+
+                    TextView tvDoctorAbout = findViewById(id.about_doctor);
+                    tvDoctorAbout.setText(doctor.getAbout_doctor());
+
+                    TextView tvDoctorAddress = findViewById(id.address);
+                    //tvDoctorName.setText(doctor.getAddress());
+
+                    TextView tvDoctorHospital = findViewById(id.hospital_name);
+                    //tvDoctorName.setText(doctor.getHospital_name());
+
+
+                }
+
+                @Override
+                public void onDoctorDataError(String errorMessage) {
+                    // Xử lý lỗi nếu có
+                }
+            });
+        }
+
         this.calendar = Calendar.getInstance();
         this.dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         this.timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
@@ -68,6 +126,8 @@ public class BookingClinicActivity extends AppCompatActivity {
             String selectedDateTime = this.dateFormat.format(calendar.getTime()) + " " + this.timeFormat.format(calendar.getTime());
             Toast.makeText(this, "Bạn đã chọn: " + selectedDateTime, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, AppointmentActivity.class);
+            String xxx = "2";
+            intent.putExtra("ID_DOCTOR", ID);
             intent.putExtra("SELECTED_DATE_TIME", selectedDateTime);
             this.startActivity(intent);
         }, calendar.get(11), calendar.get(12), true);
