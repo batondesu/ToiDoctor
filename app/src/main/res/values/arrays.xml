@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="filter_options">
+        <item>Bệnh viện</item>
+        <item>Khoa</item>
+        <item>Điểm đánh giá</item>
+    </string-array>
+</resources>
+
