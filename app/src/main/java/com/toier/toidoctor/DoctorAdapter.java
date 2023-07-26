@@ -13,14 +13,14 @@ import org.w3c.dom.Text;
 import java.text.NumberFormat;
 import java.util.List;
 
-public class DoctorAdapter extends ArrayAdapter<Doctor> {
+public class DoctorAdapter extends ArrayAdapter<com.toier.toiDoctorClass.DoctorClass> {
     private OnDoctorClickListener doctorClickListener;
 
     public interface OnDoctorClickListener {
-        void onDoctorClick(Doctor doctor);
+        void onDoctorClick(com.toier.toiDoctorClass.DoctorClass doctor);
     }
 
-    public DoctorAdapter(Context context, List<Doctor> doctorList) {
+    public DoctorAdapter(Context context, List<com.toier.toiDoctorClass.DoctorClass> doctorList) {
         super(context, 0, doctorList);
     }
 
@@ -30,7 +30,7 @@ public class DoctorAdapter extends ArrayAdapter<Doctor> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Doctor doctor = getItem(position);
+        com.toier.toiDoctorClass.DoctorClass doctor = getItem(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.doctor_item_layout, parent, false);

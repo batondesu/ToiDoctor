@@ -103,9 +103,9 @@ public class ListDoctorActivity extends AppCompatActivity {
                 .orderBy("rate", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<Doctor> doctorList = new ArrayList<>();
+                    List<com.toier.toiDoctorClass.DoctorClass> doctorList = new ArrayList<>();
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                        Doctor doctor = document.toObject(Doctor.class);
+                        com.toier.toiDoctorClass.DoctorClass doctor = document.toObject(com.toier.toiDoctorClass.DoctorClass.class);
                         doctorList.add(doctor);
                     }
 

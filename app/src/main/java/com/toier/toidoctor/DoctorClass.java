@@ -1,11 +1,11 @@
-package com.toier.toidoctor;
+package com.toier.toiDoctorClass;
 
 import java.lang.ref.Reference;
 
-public class Doctor {
+public class DoctorClass {
     private String name;
     private String department;
-    private String about_doctor;
+    private String about_DoctorClass;
     private Reference id;
     private int count_patient;
     private int exp;
@@ -13,14 +13,15 @@ public class Doctor {
     private int review;
     private String hospital;
 
-    public Doctor() {
+    public DoctorClass() {
         this.name = name;
         this.id = id;
         this.hospital = hospital;
     }
-
-    public Doctor(String name) {
+    
+    public DoctorClass(String name, String department) {
         this.name = name;
+        this.department = department;
     }
 
     public int getCount_patient() {
@@ -43,8 +44,8 @@ public class Doctor {
         return id;
     }
 
-    public String getAbout_doctor() {
-        return about_doctor;
+    public String getAbout_DoctorClass() {
+        return about_DoctorClass;
     }
 
     public String getDepartment() {
@@ -59,8 +60,8 @@ public class Doctor {
         return name;
     }
 
-    public void setAbout_doctor(String about_doctor) {
-        this.about_doctor = about_doctor;
+    public void setAbout_DoctorClass(String about_DoctorClass) {
+        this.about_DoctorClass = about_DoctorClass;
     }
 
     public void setCount_patient(int count_patient) {
