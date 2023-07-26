@@ -25,7 +25,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.toier.toidoctor.AppointmentActivity;
 import com.toier.toidoctor.LoginActivity;
 import com.toier.toidoctor.R;
-import com.toier.toidoctor.controllers.UserControlller;
 import com.toier.toidoctor.enums.TypeFragment;
 
 import java.text.SimpleDateFormat;

@@ -18,7 +18,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.toier.toidoctor.LoginActivity;
 import com.toier.toidoctor.R;
-import com.toier.toidoctor.controllers.UserControlller;
 import com.toier.toidoctor.enums.TypeFragment;
 
 public class SignUpFragment extends Fragment {
