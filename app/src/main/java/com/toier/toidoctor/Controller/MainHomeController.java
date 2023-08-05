@@ -1,18 +1,13 @@
-package com.toier.toidoctor.Controller;
+package com.toier.toidoctor.controller;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,14 +17,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.toier.toidoctor.BookingClinicActivity;
 import com.toier.toidoctor.Doctor;
-import com.toier.toidoctor.ListDoctorActivity;
-import com.toier.toidoctor.MainHomeActivity;
-import com.toier.toidoctor.PatientProfileActivity;
-import com.toier.toidoctor.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class MainHomeController {
 
@@ -61,7 +53,7 @@ public class MainHomeController {
 
     // Hàm để lấy dữ liệu Doctor từ Firestore và thêm vào listDoctor
     public void fetchDoctorsFromFirestore(ListView listView) {
-
+        List<Doctor> top = new ArrayList<Doctor>();
         // Truy cập vào collection "doctors" trong Firestore
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference doctorsRef = db.collection("Doctors");
@@ -81,7 +73,7 @@ public class MainHomeController {
 
                             // Lấy dữ liệu từ Firestore và tạo đối tượng Doctor
                             Doctor doctor = new Doctor();
-                            doctor.setDoctor_ID(document.get("ID").toString());
+                            doctor.setID(document.get("ID").toString());
                             doctor.setAbout_doctor(document.get("about_doctor").toString());
                             doctor.setName(document.get("name").toString());
                             doctor.setMajor(document.get("major").toString());
@@ -96,17 +88,23 @@ public class MainHomeController {
 
 
                             // Thêm đối tượng Doctor vào listDoctor
-                            listDoctor1.add(doctor);
+
+                            top.add(doctor);
+                            //listDoctor1.add(doctor);
                             //Log.d("ABC", String.format("Size: %d",listDoctor.size()) );
                         }
                         //Log.d("ABC", String.format("Size: %d",listDoctor1.size()) );
-                        Collections.sort(listDoctor1, new Comparator<Doctor>() {
+                        Collections.sort(top, new Comparator<Doctor>() {
                             @Override
                             public int compare(Doctor doctor1, Doctor doctor2) {
                                 // Sử dụng Double.compare() để so sánh hai giá trị Double (rate)
                                 return Double.compare(doctor2.getRate(), doctor1.getRate());
                             }
                         });
+
+                        for (int i = 0 ; i < Math.min(10,top.size()); ++i) {
+                            listDoctor1.add(top.get(i));
+                        }
                         ListDoctor listDoctorAdapter = new ListDoctor(context, listDoctor1);
                         listView.setAdapter(listDoctorAdapter);
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -114,7 +112,7 @@ public class MainHomeController {
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 Doctor doctor  = (Doctor) listDoctorAdapter.getItem(position);
                                         Intent intent = new Intent(context, BookingClinicActivity.class);
-                                intent.putExtra("KEY_VALUE", doctor.getDoctor_ID());
+                                intent.putExtra("KEY_VALUE", doctor.getID());
                                 context.startActivity(intent);
                             }
                         });

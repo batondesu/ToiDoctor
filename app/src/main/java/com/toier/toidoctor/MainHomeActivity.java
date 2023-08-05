@@ -16,8 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.toier.toidoctor.Controller.ListDoctor;
-import com.toier.toidoctor.Controller.MainHomeController;
+import com.toier.toidoctor.controller.ListDoctor;
+import com.toier.toidoctor.controller.MainHomeController;
 
 import java.util.ArrayList;
 

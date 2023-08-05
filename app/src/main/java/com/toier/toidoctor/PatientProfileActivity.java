@@ -22,8 +22,6 @@ public class PatientProfileActivity extends AppCompatActivity {
         LinearLayout layout = (LinearLayout) findViewById(R.id.patientList);
         patientprofile.getPatient();
 
-
-
         //set the properties for button
         Button btnTag1 = new Button(this);
         btnTag1 = patientprofile.createButton(this, btnTag1, "button1", "Phùng Quang Tiến");
