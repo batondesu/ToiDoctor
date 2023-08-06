@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 
 public class MainHomeActivity extends AppCompatActivity {
-
     private Button button;
     private ConstraintLayout booking;
     private ConstraintLayout medicalRecord;

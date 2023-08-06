@@ -72,6 +72,7 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginStart="90dp"
                     android:background="@drawable/button_background"
                     android:src="@drawable/icon_female" />
                 <ImageButton
@@ -79,7 +80,6 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginStart="90dp"
                     android:background="@drawable/button_background"
                     android:src="@drawable/icon_male" />
             </FrameLayout>

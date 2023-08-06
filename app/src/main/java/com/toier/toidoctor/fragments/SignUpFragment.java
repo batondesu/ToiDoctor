@@ -2,7 +2,6 @@ package com.toier.toidoctor.fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -10,12 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
+import com.toier.toidoctor.controller.UserController;
 import com.toier.toidoctor.LoginActivity;
 import com.toier.toidoctor.R;
 import com.toier.toidoctor.enums.TypeFragment;
@@ -56,7 +52,24 @@ public class SignUpFragment extends Fragment {
         mLoginActivity.getBtnLogin().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createNewAccount();
+                if (!checkForm()) {
+
+                } else {
+                    UserController.getInstance()
+                            .checkExistUser(
+                                    editTextEnterPhone.getText().toString(),
+                                    new UserController.FirestoreCallback() {
+                                        @Override
+                                        public void checkExistUser(boolean ok) {
+                                            if (ok) {
+                                                // Exited User
+                                            } else {
+                                                UserController.getInstance().addPhoneAndPassword(editTextEnterPhone.getText().toString(), editTextEnterPassword.getText().toString());
+                                                mLoginActivity.transactionToFragment(TypeFragment.INFO);
+                                            }
+                                        }
+                                    });
+                }
             }
         });
 
@@ -70,30 +83,13 @@ public class SignUpFragment extends Fragment {
         return root;
     }
 
-    private void createNewAccount() {
-        String email = editTextEnterPhone.getText().toString().trim();
-        String pwd = editTextEnterPassword.getText().toString();
-        String repwd = editTextReEnterPassword.getText().toString();
-
-        if (!pwd.equals(repwd)) {
-            Toast.makeText(getActivity(),"Mật khẩu nhập lại không đúng",Toast.LENGTH_SHORT).show();
-        } else {
-            mLoginActivity.mAuth.createUserWithEmailAndPassword(email,pwd)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful())//If account creation successful print message and send user to Login Activity
-                            {
-                                Toast.makeText(getActivity(),"Account created successfully",Toast.LENGTH_SHORT).show();
-                            }
-                            else//Print the error message incase of failure
-                            {
-                                String msg = task.getException().toString();
-                                Toast.makeText(getActivity(),"Error: "+msg,Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-            mLoginActivity.transactionToFragment(TypeFragment.SIGN_IN);
+    private boolean checkForm() {
+        if (!editTextEnterPassword.getText().toString().equals(editTextReEnterPassword.getText().toString())) {
+            return false;
+        } else if (!checkBoxAgreeTerm.isChecked()) {
+            return false;
         }
+
+        return true;
     }
 }

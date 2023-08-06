@@ -1,30 +1,23 @@
 package com.toier.toidoctor.fragments;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.toier.toidoctor.AppointmentActivity;
+import com.toier.toidoctor.controller.UserController;
 import com.toier.toidoctor.LoginActivity;
 import com.toier.toidoctor.R;
+import com.toier.toidoctor.enums.Sex;
 import com.toier.toidoctor.enums.TypeFragment;
 
 import java.text.SimpleDateFormat;
@@ -106,11 +99,17 @@ public class EnterInfoFragment extends Fragment {
         mLoginActivity.getBtnLogin().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mLoginActivity.sendVerificationCode(formatPhoneNumber(UserController.getInstance().getPhoneNumber()));
+                UserController.getInstance().addInfo(editTextEnterName.getText().toString(), editTextEnterEmail.getText().toString(), (sex == 1 ? Sex.MALE : Sex.FEMALE));
                 mLoginActivity.transactionToFragment(TypeFragment.VERIFICATION_CODE);
             }
         });
 
         return root;
+    }
+
+    private String formatPhoneNumber(String phone) {
+        return "+84" + phone.substring(1);
     }
 
     private void setStyleImageButton(ImageButton imageButton, boolean able) {
