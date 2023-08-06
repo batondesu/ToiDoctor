@@ -1,4 +1,4 @@
-package com.toier.toidoctor.Controller;
+package com.toier.toidoctor.controller;
 
 import android.util.Log;
 
@@ -16,7 +16,6 @@ import com.toier.toidoctor.enums.Role;
 import com.toier.toidoctor.enums.Sex;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class UserController {

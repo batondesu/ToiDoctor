@@ -1,34 +1,20 @@
 package com.toier.toidoctor.fragments;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.toier.toidoctor.Controller.UserController;
+import com.toier.toidoctor.controller.UserController;
 import com.toier.toidoctor.LoginActivity;
-import com.toier.toidoctor.MainHomeActivity;
 import com.toier.toidoctor.R;
-import com.toier.toidoctor.enums.TypeFragment;
-
-import java.util.ArrayList;
 
 public class VerificationCodeFragment extends Fragment {
     private LoginActivity mLoginActivity;
