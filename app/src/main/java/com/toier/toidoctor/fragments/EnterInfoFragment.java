@@ -21,17 +21,26 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.toier.toidoctor.AppointmentActivity;
+import com.toier.toidoctor.Controller.UserController;
 import com.toier.toidoctor.LoginActivity;
 import com.toier.toidoctor.R;
-import com.toier.toidoctor.controllers.UserControlller;
+import com.toier.toidoctor.enums.Sex;
 import com.toier.toidoctor.enums.TypeFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class EnterInfoFragment extends Fragment {
     private LoginActivity mLoginActivity;
@@ -107,11 +116,17 @@ public class EnterInfoFragment extends Fragment {
         mLoginActivity.getBtnLogin().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mLoginActivity.sendVerificationCode(formatPhoneNumber(UserController.getInstance().getPhoneNumber()));
+                UserController.getInstance().addInfo(editTextEnterName.getText().toString(), editTextEnterEmail.getText().toString(), (sex == 1 ? Sex.MALE : Sex.FEMALE));
                 mLoginActivity.transactionToFragment(TypeFragment.VERIFICATION_CODE);
             }
         });
 
         return root;
+    }
+
+    private String formatPhoneNumber(String phone) {
+        return "+84" + phone.substring(1);
     }
 
     private void setStyleImageButton(ImageButton imageButton, boolean able) {

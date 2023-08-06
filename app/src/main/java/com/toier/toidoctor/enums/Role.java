@@ -10,8 +10,13 @@ public enum Role {
         }
     },
     DOCTOR {
+        @Override
         public String toString() {
             return "doctor";
         }
+    };
+
+    public static Role getRole(String s) {
+        return (s.equals(PATIENT.toString()) ? PATIENT : DOCTOR);
     }
 }

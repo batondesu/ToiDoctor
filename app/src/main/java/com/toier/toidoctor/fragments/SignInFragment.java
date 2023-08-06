@@ -16,9 +16,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
+import com.toier.toidoctor.Controller.UserController;
 import com.toier.toidoctor.LoginActivity;
+import com.toier.toidoctor.MainHomeActivity;
 import com.toier.toidoctor.R;
-import com.toier.toidoctor.controllers.UserControlller;
 import com.toier.toidoctor.enums.TypeFragment;
 
 
@@ -51,7 +52,22 @@ public class SignInFragment extends Fragment {
         mLoginActivity.getBtnLogin().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AllowUserToLogin();
+                UserController
+                        .getInstance()
+                        .checkVerificationUser(
+                                editTextEnterPhone.getText().toString(),
+                                editTextEnterPassword.getText().toString(),
+                                new UserController.FirestoreCallback() {
+                                    @Override
+                                    public void checkExistUser(boolean ok) {
+                                        if (ok) {
+                                            mLoginActivity.transactionToMainHome();
+                                            UserController.getInstance().getCurrentUserFromDB(editTextEnterPhone.getText().toString());
+                                        } else {
+                                            // not allow login
+                                        }
+                                    }
+                                });
             }
         });
 
@@ -69,11 +85,11 @@ public class SignInFragment extends Fragment {
         String phone = editTextEnterPhone.getText().toString().trim();
         String pwd = editTextEnterPassword.getText().toString();
 
-            mLoginActivity.mAuth.signInWithEmailAndPassword(phone,pwd)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful())//If account login successful print message and send user to main Activity
+        mLoginActivity.mAuth.signInWithEmailAndPassword(phone,pwd)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful())//If account login successful print message and send user to main Activity
                             {
                                 mLoginActivity.transactionToMainHome();
                                 Toast.makeText(getActivity(),"Welcome to Reference Center",Toast.LENGTH_SHORT).show();
