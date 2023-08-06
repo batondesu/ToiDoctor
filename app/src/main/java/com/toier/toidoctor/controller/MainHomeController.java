@@ -1,18 +1,13 @@
-package com.toier.toidoctor.Controller;
+package com.toier.toidoctor.controller;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,10 +17,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.toier.toidoctor.BookingClinicActivity;
 import com.toier.toidoctor.Doctor;
-import com.toier.toidoctor.ListDoctorActivity;
-import com.toier.toidoctor.MainHomeActivity;
-import com.toier.toidoctor.PatientProfileActivity;
-import com.toier.toidoctor.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

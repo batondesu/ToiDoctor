@@ -11,23 +11,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.*;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.*;
-import com.google.firebase.firestore.*;
-import com.toier.toidoctor.Controller.BookingController;
+import com.toier.toidoctor.controller.BookingController;
 import com.toier.toidoctor.R.id;
 import com.toier.toidoctor.R.layout;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 
 public class BookingClinicActivity extends AppCompatActivity {

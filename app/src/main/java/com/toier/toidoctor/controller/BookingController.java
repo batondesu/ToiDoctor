@@ -1,41 +1,14 @@
-package com.toier.toidoctor.Controller;
-
-import static android.service.controls.ControlsProviderService.TAG;
+package com.toier.toidoctor.controller;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.*;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.*;
 import com.google.firebase.firestore.*;
 import com.toier.toidoctor.Appointment;
-import com.toier.toidoctor.BookingClinicActivity;
 import com.toier.toidoctor.Doctor;
-import com.toier.toidoctor.R.id;
-import com.toier.toidoctor.R.layout;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 
 public class BookingController {
     private Context context;
