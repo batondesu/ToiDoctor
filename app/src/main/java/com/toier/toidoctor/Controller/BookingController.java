@@ -7,16 +7,12 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.*;
 import com.google.firebase.firestore.*;
-import com.toier.toidoctor.Appointment;
 import com.toier.toidoctor.Doctor;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
+import com.google.firebase.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class BookingController {
@@ -107,7 +103,7 @@ public class BookingController {
     }
 
 
-    public Timestamp convertToTimestamp(int day, int month, int year, int hour) {
+    public static Timestamp convertToTimestamp(int day, int month, int year, int hour) {
         // Tạo một đối tượng Calendar và thiết lập các thông số
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, year);
@@ -121,7 +117,7 @@ public class BookingController {
         Date date = calendar.getTime();
 
         // Tạo Timestamp từ Date
-        Timestamp timestamp = new Timestamp(date.getTime());
+        Timestamp timestamp = new Timestamp(date);
 
         return timestamp;
     }

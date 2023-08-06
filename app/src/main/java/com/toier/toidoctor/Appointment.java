@@ -1,6 +1,6 @@
 package com.toier.toidoctor;
 
-import java.sql.Timestamp;
+import com.google.firebase.Timestamp;
 
 public class Appointment {
     private String doctor_id;
@@ -8,7 +8,10 @@ public class Appointment {
     private String schedule;
 
     private Timestamp timestamp;
-    public Appointment(){}
+    public Appointment(){
+        this.doctor_id = "";
+        this.timestamp = null;
+    }
 
     public Appointment(String doctor_id, String patient_id, Timestamp timestamp) {
         this.doctor_id = doctor_id;
@@ -39,4 +42,5 @@ public class Appointment {
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
+
 }

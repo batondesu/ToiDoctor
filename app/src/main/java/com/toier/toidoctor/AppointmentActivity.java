@@ -13,7 +13,7 @@ import com.toier.toidoctor.controller.BookingController;
 import com.toier.toidoctor.R.id;
 import com.toier.toidoctor.R.layout;
 
-import java.sql.Timestamp;
+import com.google.firebase.Timestamp;
 
 public class AppointmentActivity extends AppCompatActivity {
     private TextView tvDisplayDateTime;
