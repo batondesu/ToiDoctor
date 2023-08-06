@@ -53,7 +53,7 @@
         app:layout_constraintVertical_bias="0.0"
         android:id="@+id/majors"
         android:layout_width="60dp"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="60dp"
         android:layout_alignParentTop="true"
@@ -61,6 +61,7 @@
         android:text="@string/majors"
         android:textAppearance="@style/TextView.Secondary"
         android:gravity="top"
+        android:singleLine="false"
         />
 
     <View
@@ -79,47 +80,41 @@
         android:layout_marginTop="11.16dp"
         android:background="@drawable/image_dr"/>
 
-
-    <TextView
-        android:id="@+id/review"
-        android:layout_width="90dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:gravity="top"
-        android:text="@string/review"
-        android:textAppearance="@style/TextView.Secondary"
-        android:textSize="15sp"
+        android:layout_marginStart="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78" />
+        app:layout_constraintVertical_bias="0.78">
 
-    <TextView
-        android:id="@+id/icon_star"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/icon_star"
-        android:clipToOutline="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.673"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78" />
+        <TextView
+            android:id="@+id/review"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:text="@string/review"
+            android:textAppearance="@style/TextView.Secondary"
+            android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/rate"
-        android:layout_width="30dp"
-        android:layout_height="20dp"
-        android:text="@string/rate"
-        android:textAppearance="@style/TextView.Primary"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.743"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78" />
+        <TextView
+            android:id="@+id/icon_star"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/icon_star"
+            android:clipToOutline="true"
+           />
 
+        <TextView
+            android:id="@+id/rate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/rate"
+            android:textAppearance="@style/TextView.Primary"
+            android:textSize="15sp"
+            />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

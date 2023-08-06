@@ -1,4 +1,3 @@
-
 <resources>
     <string name="app_name">ToiDoctor</string>
 
@@ -90,4 +89,5 @@
     <string name="todo_avt">TODO</string>
     <string name="todoo">TODO</string>
     <string name="todooo">TODO</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

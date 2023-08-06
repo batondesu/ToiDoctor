@@ -1,16 +1,22 @@
 package com.toier.toidoctor;
 
+import com.google.firebase.Timestamp;
+
 public class Appointment {
     private String doctor_id;
     private String patient_id;
     private String schedule;
 
-    public Appointment(){}
+    private Timestamp timestamp;
+    public Appointment(){
+        this.doctor_id = "";
+        this.timestamp = null;
+    }
 
-    public Appointment(String doctor_id, String patient_id, String schedule) {
+    public Appointment(String doctor_id, String patient_id, Timestamp timestamp) {
         this.doctor_id = doctor_id;
         this.patient_id = patient_id;
-        this.schedule = schedule;
+        this.timestamp = timestamp;
     }
 
     public String getDoctor_id() {
@@ -29,11 +35,12 @@ public class Appointment {
         this.patient_id = patient_id;
     }
 
-    public String getSchedule() {
-        return schedule;
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
 
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
+
 }

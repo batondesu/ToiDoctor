@@ -1,38 +1,30 @@
 package com.toier.toidoctor;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.*;
-
 import java.io.Serializable;
-import java.util.List;
 
 public class Doctor implements Serializable {
-    String name;
-    String major;
-    double rate;
-    int review;
-    String doctor_ID;
+    private String name;
+    private String major;
+    private double rate;
+    private int review;
+    private String ID;
 
-    int exp;
-    String hospital_name;
-    String about_doctor;
-    int patient;
-    String address;
+    private int exp;
+    private String hospital_name;
+    private String about_doctor;
+    private int patient;
+    private String address;
+
 
     public Doctor() {
     }
 
-    public Doctor(String name, String major, int review, double rate, String doctor_ID, String address, String hospital_name, String about_doctor, int exp, int patient) {
+    public Doctor(String name, String major, int review, double rate, String ID, String address, String hospital_name, String about_doctor, int exp, int patient) {
         this.name = name;
         this.rate = rate;
         this.major = major;
         this.review = review;
-        this.doctor_ID = doctor_ID;
+        this.ID = ID;
         this.patient = patient;
         this.exp = exp;
         this.address = address;
@@ -64,12 +56,12 @@ public class Doctor implements Serializable {
         return patient;
     }
 
-    public void setDoctor_ID(String doctor_ID) {
-        this.doctor_ID = doctor_ID;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
-    public String getDoctor_ID() {
-        return doctor_ID;
+    public String getID() {
+        return ID;
     }
 
     public void setExp(int exp) {
