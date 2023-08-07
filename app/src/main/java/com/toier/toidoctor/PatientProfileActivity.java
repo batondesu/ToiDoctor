@@ -1,5 +1,6 @@
 package com.toier.toidoctor;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,21 +10,122 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.toier.toidoctor.controller.patientprofile;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.toier.toidoctor.Controller.patientprofile;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class PatientProfileActivity extends AppCompatActivity {
     private Button button;
+    private String name;
+    private String phoneNumber;
+    private String doctorName;
+    private String detail;
 
+    private void setName(String name) {
+        this.name = name;
+    }
+
+    private String getName() {
+        return this.name;
+    }
+
+    private void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    private String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+
+    private void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    private String getDetail() {
+        return this.detail;
+    }
+    private void setButton(String id) {
+        Button btnTest =  new Button(this);
+        btnTest = patientprofile.createButton(this, btnTest, id, getName());
+        LinearLayout layout = (LinearLayout) findViewById(R.id.patientList);
+        layout.addView(btnTest);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
+        btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientProfileActivity.this, ProfileActivity.class);
+                intent.putExtra("name", getName());
+                intent.putExtra("phoneNumber", getPhoneNumber());
+                intent.putExtra("age", "17");
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_profile);
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.patientList);
-        patientprofile.getPatient();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+//      Lấy thông tin bệnh nhân
+        db.collection("Patients")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete  (@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("ABC", document.getId() + " => " + document.getData());
+                                String user_id = String.valueOf(document.getData().get("User"));
+                                db.collection("Users")
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                                        Timestamp timestamp = (Timestamp) document.getData().get("birthday");
+                                                        Date date = timestamp.toDate();
+                                                        Log.d("ABC", String.valueOf(date.getDate()));
+
+                                                        if(document.getId().equals(user_id)) {
+                                                            setName(String.valueOf(document.getData().get("name")));
+                                                            setPhoneNumber(String.valueOf(document.getData().get("phoneNumber")));
+                                                            setButton(user_id);
+                                                        }
+                                                    }
+                                                } else {
+                                                    Log.w("ABC", "Error getting documents.", task.getException());
+                                                }
+                                            }
+                                        });
+                                //setButton(document.getId(), String.valueOf(document.getData().get("name")), String.valueOf(document.getData().get("phoneNumber")));
+                                //setName( String.valueOf(document.getData().get("name")));
+                                //setPhoneNumber( String.valueOf(document.getData().get("phoneNumber")));
+                                //setButton(document.getId(), getName(), getPhoneNumber());
+
+                            }
+                        } else {
+                            Log.w("ABC", "Error getting documents.", task.getException());
+                        }
+                    }
+                });
 
         //set the properties for button
-        Button btnTag1 = new Button(this);
+        /*Button btnTag1 = new Button(this);
         btnTag1 = patientprofile.createButton(this, btnTag1, "button1", "Phùng Quang Tiến");
         layout.addView(btnTag1);
         Button btnTag2 = new Button(this);
@@ -50,9 +152,9 @@ public class PatientProfileActivity extends AppCompatActivity {
         Button btnTag9 = new Button(this);
         btnTag9 = patientprofile.createButton(this, btnTag9, "button9", "David");
         layout.addView(btnTag9);
+        */
 
-
-        btnTag1.setOnClickListener(new View.OnClickListener() {
+        /*btnTag1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PatientProfileActivity.this, ProfileActivity.class);
@@ -150,7 +252,7 @@ public class PatientProfileActivity extends AppCompatActivity {
                 intent.putExtra("content", "Sỏi thận");
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
 }
