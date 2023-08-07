@@ -4,12 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,25 +18,36 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.toier.toidoctor.Controller.patientMedicalRecord;
-import com.toier.toidoctor.Controller.patientprofile;
-
-import org.w3c.dom.Text;
+import com.toier.toidoctor.controller.patientMedicalRecord;
 
 import java.util.Date;
 
 public class ProfileActivity extends AppCompatActivity {
+    public Button isChoosed;
+
     private void setButton(String id, String time, String detail) {
-        Button btnTest =  new Button(this);
-        btnTest = patientMedicalRecord.createButton(this, btnTest, id, time);
+        Log.d("ABC", "id = " + id);
+        final Button btnTest =  new Button(this);
+        final Button btnTest_v = patientMedicalRecord.createButton(this, btnTest, id, time);
         LinearLayout layout = (LinearLayout) findViewById(R.id.updatedDate);
-        layout.addView(btnTest);
-        btnTest.setOnClickListener(new View.OnClickListener() {
+        layout.addView(btnTest_v);
+        Log.d("ABC", "btnid = " + btnTest.getId());
+
+        btnTest_v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //btnTest.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_bright)); // Set the background color to green
+                if(isChoosed != null) {
+                    isChoosed.setBackgroundResource(R.drawable.rectangle6); // Set the background color to green
+                    Log.d("ABC", String.valueOf(isChoosed.getId()));
+                    isChoosed.setTextColor(getResources().getColor(R.color.black));
+
+                }
+                int whiteColor = 0xFFFFFFFF;
+                btnTest_v.setBackgroundResource(R.drawable.rectangle8); // Set the background color to green
+                btnTest_v.setTextColor(whiteColor);
                 TextView result = (TextView) findViewById(R.id.resultdetail);
                 result.setText(detail);
+                isChoosed = btnTest_v;
 
             }
         });
