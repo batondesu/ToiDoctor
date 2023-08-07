@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.toier.toidoctor.Controller.patientprofile;
+import com.toier.toidoctor.controller.UserController;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,37 +25,11 @@ import java.util.List;
 
 public class PatientProfileActivity extends AppCompatActivity {
     private Button button;
-    private String name;
-    private String phoneNumber;
-    private String doctorName;
-    private String detail;
 
-    private void setName(String name) {
-        this.name = name;
-    }
 
-    private String getName() {
-        return this.name;
-    }
-
-    private void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    private String getPhoneNumber() {
-        return this.phoneNumber;
-    }
-
-    private void setDetail(String detail) {
-        this.detail = detail;
-    }
-
-    private String getDetail() {
-        return this.detail;
-    }
-    private void setButton(String id) {
+    private void setButton(String id, String name, String phoneNumber) {
         Button btnTest =  new Button(this);
-        btnTest = patientprofile.createButton(this, btnTest, id, getName());
+        btnTest = patientprofile.createButton(this, btnTest, id, name);
         LinearLayout layout = (LinearLayout) findViewById(R.id.patientList);
         layout.addView(btnTest);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -64,8 +39,8 @@ public class PatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PatientProfileActivity.this, ProfileActivity.class);
-                intent.putExtra("name", getName());
-                intent.putExtra("phoneNumber", getPhoneNumber());
+                intent.putExtra("name", name);
+                intent.putExtra("phoneNumber", phoneNumber);
                 intent.putExtra("age", "17");
                 intent.putExtra("id", id);
                 startActivity(intent);
@@ -100,11 +75,17 @@ public class PatientProfileActivity extends AppCompatActivity {
                                                         Timestamp timestamp = (Timestamp) document.getData().get("birthday");
                                                         Date date = timestamp.toDate();
                                                         Log.d("ABC", String.valueOf(date.getDate()));
+                                                        if (UserController.getInstance().getRole().isPatient()) {
+                                                            if (document.getId().equals(user_id) && UserController.getInstance().getPhoneNumber().equals(String.valueOf(document.getData().get("phoneNumber")))) {
 
-                                                        if(document.getId().equals(user_id)) {
-                                                            setName(String.valueOf(document.getData().get("name")));
-                                                            setPhoneNumber(String.valueOf(document.getData().get("phoneNumber")));
-                                                            setButton(user_id);
+                                                                setButton(user_id, String.valueOf(document.getData().get("name")), String.valueOf(document.getData().get("phoneNumber")));
+                                                            }
+                                                        }
+                                                        else {
+                                                            if (document.getId().equals(user_id) ) {
+
+                                                                setButton(user_id, String.valueOf(document.getData().get("name")), String.valueOf(document.getData().get("phoneNumber")));
+                                                            }
                                                         }
                                                     }
                                                 } else {

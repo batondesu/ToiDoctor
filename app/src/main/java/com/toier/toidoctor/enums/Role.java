@@ -16,6 +16,10 @@ public enum Role {
         }
     };
 
+    public boolean isPatient() {
+        return this.equals(PATIENT);
+    }
+
     public static Role getRole(String s) {
         return (s.equals(PATIENT.toString()) ? PATIENT : DOCTOR);
     }

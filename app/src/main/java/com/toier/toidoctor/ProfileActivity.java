@@ -4,12 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,24 +19,31 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.toier.toidoctor.Controller.patientMedicalRecord;
-import com.toier.toidoctor.Controller.patientprofile;
-
-import org.w3c.dom.Text;
 
 import java.util.Date;
 
 public class ProfileActivity extends AppCompatActivity {
+    private Button isChoosed;
     private void setButton(String id, String time, String detail) {
         Button btnTest =  new Button(this);
-        btnTest = patientMedicalRecord.createButton(this, btnTest, id, time);
+        final Button btnTest_v = patientMedicalRecord.createButton(this, btnTest, id, time);
+        btnTest_v.setBackgroundResource(R.drawable.rectangle6);
         LinearLayout layout = (LinearLayout) findViewById(R.id.updatedDate);
         layout.addView(btnTest);
-        btnTest.setOnClickListener(new View.OnClickListener() {
+
+        btnTest_v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //btnTest.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_bright)); // Set the background color to green
+                if(isChoosed != null) {
+                    isChoosed.setBackgroundResource(R.drawable.rectangle6);
+                    isChoosed.setTextColor(getResources().getColor(R.color.black));
+                }
+                btnTest_v.setBackgroundResource(R.drawable.rectangle8);
                 TextView result = (TextView) findViewById(R.id.resultdetail);
                 result.setText(detail);
+                btnTest_v.setTextColor(getResources().getColor(R.color.white));
+                isChoosed = btnTest_v;
+
 
             }
         });
@@ -51,9 +56,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         Button btnCall = (Button) findViewById(R.id.phoneCall);
         Button btnMessage = (Button) findViewById(R.id.sendMessage);
-        TextView patientName = (TextView) findViewById(R.id.textView3);
-        TextView patientAge = (TextView) findViewById(R.id.textView7);
+        TextView patientName = (TextView) findViewById(R.id.name);
+        TextView patientAge = (TextView) findViewById(R.id.age);
         TextView patientDetail = (TextView) findViewById(R.id.resultdetail);
+        Log.d("ABC", getIntent().getStringExtra("name"));
 
 
         patientName.setText(getIntent().getStringExtra("name"));
