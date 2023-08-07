@@ -15,6 +15,7 @@ import com.toier.toidoctor.R.layout;
 
 import com.google.firebase.Timestamp;
 import com.toier.toidoctor.controllers.BookingController;
+import com.toier.toidoctor.controllers.UserController;
 
 public class AppointmentActivity extends AppCompatActivity {
     private TextView tvDisplayDateTime;
@@ -82,7 +83,8 @@ public class AppointmentActivity extends AppCompatActivity {
 
         Log.d("FFF", timestamp.toString() );
 
-        booking.addBookingData(ID, "1", timestamp);
+        String patient_id = UserController.getInstance().getPhoneNumber();
+        booking.addBookingData(ID, patient_id, timestamp);
     }
 
 }

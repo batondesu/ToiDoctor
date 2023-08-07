@@ -65,12 +65,12 @@ public class MainHomeActivity extends AppCompatActivity {
         //final int count;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_home);
-        //createNotificationChannel();
+        createNotificationChannel();
 
         MainHomeController listDoctorController = new MainHomeController(this);
         ID = UserController.getInstance().getPhoneNumber();
         if (UserController.getInstance().isPatient()) {
-            //Log.d("BUG", "vcvc");
+            Log.d("BUG", "vcvc");
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             CollectionReference appointmentsRef = db.collection("Appointments"); // Thay "appointments" bằng tên collection của bạn
             appointmentsRef.addSnapshotListener(MetadataChanges.INCLUDE, new EventListener<QuerySnapshot>() {
@@ -81,13 +81,14 @@ public class MainHomeActivity extends AppCompatActivity {
                         for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
                             switch (dc.getType()) {
                                 case ADDED:
+                                    Log.d("BUG", "vcvc");
                                     if (dc.getDocument().getBoolean("notice")) {
                                         // Ignore
                                     } else {
                                         Timestamp tp = dc.getDocument().getTimestamp("time");
 
                                        showNotification(tp ,XXX);
-                                        //Log.d("TEST_NOTICE", dc.getDocument().getTimestamp("time").toString());
+                                        Log.d("TEST_NOTICE", dc.getDocument().getTimestamp("time").toString());
                                          updateField();
                                     }
                                 case REMOVED:
@@ -327,7 +328,7 @@ public class MainHomeActivity extends AppCompatActivity {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "notification")
                 .setSmallIcon(R.drawable.iconnoti) // Đặt icon cho thông báo
                 .setContentTitle("Nhắc nhở") // Đặt tiêu đề thông báo
-                .setContentText("Đặt lịch khám thành công") // Đặt nội dung thông báo
+                .setContentText(s) // Đặt nội dung thông báo
                 //.setContentIntent(pendingIntent) // Đặt PendingIntent
                 .setAutoCancel(true); // Tự động huỷ thông báo khi người dùng nhấn vào
 

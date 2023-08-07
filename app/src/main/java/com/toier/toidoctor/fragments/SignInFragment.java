@@ -63,7 +63,7 @@ public class SignInFragment extends Fragment {
                                     public void checkExistUser(boolean ok) {
                                         if (ok) {
                                             UserController.getInstance().getCurrentUserFromDB(editTextEnterPhone.getText().toString());
-                                            SystemClock.sleep(1000);
+                                            SystemClock.sleep(1500);
                                             mLoginActivity.transactionToMainHome();
                                         } else {
                                             Toast.makeText(mLoginActivity, "Số điện thoại hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
