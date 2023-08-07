@@ -1,4 +1,4 @@
-package com.toier.toidoctor.controller;
+package com.toier.toidoctor.controllers;
 
 import android.content.Context;
 import android.util.Log;

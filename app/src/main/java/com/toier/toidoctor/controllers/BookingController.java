@@ -1,31 +1,19 @@
-package com.toier.toidoctor.controller;
+package com.toier.toidoctor.controllers;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.*;
 import com.google.firebase.firestore.*;
-import com.toier.toidoctor.Appointment;
-import com.toier.toidoctor.BookingClinicActivity;
 import com.toier.toidoctor.Doctor;
 
 import com.google.firebase.Timestamp;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class BookingController {

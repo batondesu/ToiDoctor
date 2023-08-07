@@ -33,9 +33,9 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.MetadataChanges;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.toier.toidoctor.controller.BookingController;
-import com.toier.toidoctor.controller.MainHomeController;
-import com.toier.toidoctor.controller.Patient;
+import com.toier.toidoctor.controllers.BookingController;
+import com.toier.toidoctor.controllers.MainHomeController;
+import com.toier.toidoctor.controllers.Patient;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

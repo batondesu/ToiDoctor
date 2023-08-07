@@ -1,4 +1,4 @@
-package com.toier.toidoctor.controller;
+package com.toier.toidoctor.controllers;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -20,7 +20,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class patientprofile {
+public class PatientProfile {
 
     private static ArrayList<Patient> Patients = new ArrayList<Patient>();
 
