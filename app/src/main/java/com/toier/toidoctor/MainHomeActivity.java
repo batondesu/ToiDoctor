@@ -42,6 +42,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import com.google.firebase.firestore.EventListener;
+import com.toier.toidoctor.controllers.UserController;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -55,7 +56,7 @@ public class MainHomeActivity extends AppCompatActivity {
     private ConstraintLayout medicalRecord;
 
     private boolean XXX = false;
-    private String ID = "0363912803";
+    private String ID;
     private Date date;
 
     @SuppressLint("MissingInflatedId")
@@ -67,7 +68,8 @@ public class MainHomeActivity extends AppCompatActivity {
         //createNotificationChannel();
 
         MainHomeController listDoctorController = new MainHomeController(this);
-        if (!XXX) {
+        ID = UserController.getInstance().getPhoneNumber();
+        if (UserController.getInstance().isPatient()) {
             //Log.d("BUG", "vcvc");
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             CollectionReference appointmentsRef = db.collection("Appointments"); // Thay "appointments" bằng tên collection của bạn
@@ -164,7 +166,7 @@ public class MainHomeActivity extends AppCompatActivity {
             listDoctorController.fetchDoctorsFromFirestore(listView);
         } else {
 
-            /*FirebaseFirestore db = FirebaseFirestore.getInstance();
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
             CollectionReference appointmentsRef = db.collection("Appointments"); // Thay "appointments" bằng tên collection của bạn
             appointmentsRef.addSnapshotListener(MetadataChanges.INCLUDE, new EventListener<QuerySnapshot>() {
                 @Override
@@ -191,7 +193,7 @@ public class MainHomeActivity extends AppCompatActivity {
                         }
                     }
                 }
-            });*/
+            });
 
             LinearLayout parentLayout = (LinearLayout) findViewById(R.id.linearLayout);
             // Sử dụng LayoutInflater để tạo một đối tượng View từ layout con (child_layout.xml)
@@ -250,12 +252,12 @@ public class MainHomeActivity extends AppCompatActivity {
                 }
             });
 
-            /*TextView tv = (TextView) findViewById(R.id.top_dr);
+            TextView tv = (TextView) findViewById(R.id.top_dr);
             tv.setText("Danh sách bệnh nhân");
 
             // Tìm ListView trong layout và thiết lập Adapter cho nó
             ListView listView = findViewById(R.id.listdoctor);
-            listDoctorController.fetchPatientFromFirestore(ID, listView);*/
+            listDoctorController.fetchPatientFromFirestore(ID, listView);
         }
 
 

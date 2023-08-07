@@ -154,6 +154,10 @@ public class UserController {
         return role;
     }
 
+    public boolean isPatient() {
+        return role.equals(Role.PATIENT);
+    }
+
     public interface FirestoreCallback {
         void checkExistUser(boolean ok);
     }

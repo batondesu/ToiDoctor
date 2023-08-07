@@ -6,6 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,8 +62,9 @@ public class SignInFragment extends Fragment {
                                     @Override
                                     public void checkExistUser(boolean ok) {
                                         if (ok) {
-                                            mLoginActivity.transactionToMainHome();
                                             UserController.getInstance().getCurrentUserFromDB(editTextEnterPhone.getText().toString());
+                                            SystemClock.sleep(1000);
+                                            mLoginActivity.transactionToMainHome();
                                         } else {
                                             Toast.makeText(mLoginActivity, "Số điện thoại hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
                                         }
