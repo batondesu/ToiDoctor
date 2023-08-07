@@ -66,18 +66,23 @@ public class DoctorAdapter extends ArrayAdapter<Doctor> implements Filterable {
         Doctor doctor = this.getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.doctor_item_layout, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.doctor, parent, false);
         }
 
-        TextView doctorName = convertView.findViewById(R.id.doctorName);
-        TextView doctorDepartment = convertView.findViewById(R.id.doctorDepartment);
-        TextView doctorRate = convertView.findViewById(R.id.doctorRate);
-        TextView doctorReview = convertView.findViewById(R.id.doctorReview);
+//        TextView doctorName = convertView.findViewById(R.id.doctor);
+//        TextView doctorDepartment = convertView.findViewById(R.id.majors);
+//        TextView doctorRate = convertView.findViewById(R.id.rate);
+//        TextView doctorReview = convertView.findViewById(R.id.review);
+//
+//        doctorName.setText(doctor.getName());
+//        doctorDepartment.setText(doctor.getMajor());
+//        doctorRate.setText(NumberFormat.getInstance().format(doctor.getRate()) + "*");
+//        doctorReview.setText(NumberFormat.getInstance().format(doctor.getReview()) + " đánh giá");
 
-        doctorName.setText(doctor.getName());
-        doctorDepartment.setText(doctor.getMajor());
-        doctorRate.setText(NumberFormat.getInstance().format(doctor.getRate()) + "*");
-        doctorReview.setText(NumberFormat.getInstance().format(doctor.getReview()) + " đánh giá");
+        ((TextView) convertView.findViewById(R.id.doctor)).setText(String.format(doctor.getName()));
+        ((TextView) convertView.findViewById(R.id.majors)).setText(String.format(doctor.getMajor()));
+        ((TextView) convertView.findViewById(R.id.review)).setText(String.format("(%d Đánh giá)", doctor.getReview()));
+        ((TextView) convertView.findViewById(R.id.rate)).setText(String.format(String.valueOf(doctor.getRate())));
 
 
         return convertView;
