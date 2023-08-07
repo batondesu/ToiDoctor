@@ -119,7 +119,7 @@ public class ListDoctorActivity extends AppCompatActivity {
 
     private void showDepartmentDialog() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Hospitals").document(selectedHospital.getId()).collection("departments")
+        db.collection("Hospitals").document(selectedHospital.getId()).collection("department")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     List<QueryDocumentSnapshot> departmentList = new ArrayList<>();
@@ -151,7 +151,7 @@ public class ListDoctorActivity extends AppCompatActivity {
 
     private void showDoctorsList(QueryDocumentSnapshot selectedHospital, QueryDocumentSnapshot selectedDepartment) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Hospitals").document(selectedHospital.getId()).collection("departments")
+        db.collection("Hospitals").document(selectedHospital.getId()).collection("department")
                 .document(selectedDepartment.getId()).collection("doctors")
                 .orderBy("rate", Query.Direction.DESCENDING)
                 .get()
