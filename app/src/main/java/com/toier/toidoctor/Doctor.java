@@ -3,27 +3,28 @@ package com.toier.toidoctor;
 import java.io.Serializable;
 
 public class Doctor implements Serializable {
-    String name;
-    String major;
-    double rate;
-    int review;
-    String ID;
+    private String name;
+    private String major;
+    private double rate;
+    private int review;
+    private String ID;
 
-    int exp;
-    String hospital_name;
-    String about_doctor;
-    int patient;
-    String address;
+    private int exp;
+    private String hospital_name;
+    private String about_doctor;
+    private int patient;
+    private String address;
+
 
     public Doctor() {
     }
 
-    public Doctor(String name, String major, int review, double rate, String doctor_ID, String address, String hospital_name, String about_doctor, int exp, int patient) {
+    public Doctor(String name, String major, int review, double rate, String ID, String address, String hospital_name, String about_doctor, int exp, int patient) {
         this.name = name;
         this.rate = rate;
         this.major = major;
         this.review = review;
-        this.ID = doctor_ID;
+        this.ID = ID;
         this.patient = patient;
         this.exp = exp;
         this.address = address;
@@ -110,4 +111,5 @@ public class Doctor implements Serializable {
     public void setReview(int review) {
         this.review = review;
     }
+
 }

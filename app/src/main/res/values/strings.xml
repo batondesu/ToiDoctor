@@ -90,5 +90,6 @@
     <string name="todo_avt">TODO</string>
     <string name="todoo">TODO</string>
     <string name="todooo">TODO</string>
+    <string name="title_activity_maps">MapsActivity</string>
     <string name="doctorList_str">Danh sách Bác sĩ</string>
 </resources>

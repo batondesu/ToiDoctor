@@ -33,45 +33,30 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import com.toier.toidoctor.controller.patient;
-public class patientprofile {
+public class patientMedicalRecord {
 
     private static ArrayList<patient> patients = new ArrayList<patient>();
 
-    public static Button createButton(Context context, Button btnTag, String id , String name) {
-        btnTag.setCompoundDrawablesWithIntrinsicBounds(R.drawable.profile_icon, 0, 0, 0);
-        btnTag.setText(name);
-        btnTag.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-        btnTag.setTypeface(Typeface.DEFAULT);
-        int textColor = 0xFF040404;
-        btnTag.setTextColor(textColor);
+    public static Button createButton(Context context, Button btnTest, String id, String time) {
         int whiteColor = 0xFFFFFFFF;
-        btnTag.setBackgroundColor(whiteColor);
+        btnTest.setBackgroundColor(whiteColor); // Set the background color to green
+        btnTest.setText(time);
+        btnTest.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         int heightInDp = 74;
         float scale = context.getResources().getDisplayMetrics().density;
         int heightInPixels = (int) (heightInDp * scale + 0.5f);
-
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, // Set the desired width (you can use WRAP_CONTENT, MATCH_PARENT, or specific pixel values)
+                LinearLayout.LayoutParams.WRAP_CONTENT, // Set the desired width (you can use WRAP_CONTENT, MATCH_PARENT, or specific pixel values)
                 heightInPixels  // Set the desired height (you can use WRAP_CONTENT, MATCH_PARENT, or specific pixel values)
         );
-
-        int paddingInDp = 10; // Replace this with the desired padding in dp
-
-        int paddingInPixels = (int) (paddingInDp * scale + 0.5f); // Adding 0.5f for rounding to the nearest pixel
-        btnTag.setPadding(paddingInPixels, 0, paddingInPixels, 0);
-
-        btnTag.setLayoutParams(params);
-
         int marginInDp = 5;
         int marginInPixels = (int) (marginInDp * scale + 0.5f);
         params.setMargins(marginInPixels, marginInPixels, marginInPixels, marginInPixels);
-        int paddingBetweenIconAndTextInPixels = (int) (8 * scale + 0.5f);
-        btnTag.setCompoundDrawablePadding(paddingBetweenIconAndTextInPixels);
-        //btnTag.setBackgroundResource(R.drawable.rectangle);
-
+        params.weight = 1.0f;
+        btnTest.setLayoutParams(params);
         String tagString = id;
-        btnTag.setTag(tagString);
-        return btnTag;
+        btnTest.setTag(tagString);
+        return btnTest;
     }
 
 

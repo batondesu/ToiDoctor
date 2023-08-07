@@ -10,10 +10,11 @@ import com.toier.toidoctor.Doctor;
 import com.toier.toidoctor.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListDoctor extends BaseAdapter {
     private Context context;
-    private ArrayList<Doctor> doctorList;
+    private List<Doctor> doctorList;
 
     public ListDoctor(Context context, ArrayList<Doctor> doctorList) {
         this.context = context;
