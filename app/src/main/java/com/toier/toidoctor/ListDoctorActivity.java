@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -33,7 +34,13 @@ public class ListDoctorActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listView);
 
-        showHospitalDialog();
+        Button buttonFilter = findViewById(R.id.filter);
+        buttonFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHospitalDialog();
+            }
+        });
 
         onListViewSearch();
     }
@@ -55,34 +62,37 @@ public class ListDoctorActivity extends AppCompatActivity {
                    }
                }
            }
-        });
 
+            DoctorAdapter adapter = new DoctorAdapter(this, doctorList);
+            ListView listView1 = findViewById(R.id.listView);
+            listView1.setAdapter(adapter);
 
-        DoctorAdapter adapter = new DoctorAdapter(this, doctorList);
-        ListView listView1 = findViewById(R.id.listViewSearch);
-        listView1.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Doctor doctor = adapter.getItem(i);
+                    //adapter.showDoctorInfoDialog(doctor);
+                    Intent intent = new Intent(ListDoctorActivity.this, BookingClinicActivity.class);
+                    intent.putExtra("KEY_VALUE", doctor.getID());
+                    startActivity(intent);
+                }
+            });
 
-        SearchView searchView = findViewById(R.id.searchView);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
+            adapter.notifyDataSetChanged();
 
-            @Override
-            public boolean onQueryTextChange(String s) {
-//                List<Doctor> filteredDoctors = new ArrayList<>();
-//                for (Doctor doctor : doctorList) {
-//                    if (doctor.getName().toLowerCase().contains(s.toLowerCase())) {
-//                        filteredDoctors.add(doctor);
-//                    }
-//                }
-//                adapter.clear();
-//                adapter.addAll(filteredDoctors);
-//                adapter.notifyDataSetChanged();
-                adapter.getFilter().filter(s);
-                return false;
-            }
+            SearchView searchView = findViewById(R.id.searchView);
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    adapter.getFilter().filter(s);
+                    return false;
+                }
+            });
         });
     }
 
