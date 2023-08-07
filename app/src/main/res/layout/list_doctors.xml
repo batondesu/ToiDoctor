@@ -58,7 +58,53 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <androidx.appcompat.widget.SearchView-->
+<!--            android:id="@+id/searchView"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginStart="15dp"-->
+<!--            android:layout_marginEnd="15dp"-->
+<!--            android:layout_marginTop="90dp"-->
+<!--            android:background="@drawable/rectangle"-->
+<!--            android:queryHint="Tìm kiếm bác sĩ hoặc khoa khám ..."-->
+<!--            android:textAlignment="viewStart"-->
+<!--            android:textColor="#610909"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/filter"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <ListView-->
+<!--            android:id="@+id/listViewSearch"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/searchView"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/filter"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            app:cornerRadius="7dp"-->
+<!--            app:icon="@drawable/icon_filter"-->
+<!--            app:iconGravity="textStart"-->
+<!--            app:iconPadding="0dp"-->
+<!--            app:iconSize="20dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/searchView"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@id/searchView" />-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -74,7 +120,7 @@
         tools:ignore="MissingConstraints">
 
 
-        <SearchView
+        <android.widget.SearchView
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -96,13 +142,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/searchView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+             />
 
         <Button
             android:id="@+id/filter"
-
             android:layout_width="30dp"
             android:layout_height="40dp"
             app:cornerRadius="7dp"
@@ -389,7 +432,8 @@
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="0dp" />
 
-                <ImageView
+                <ImageButton
+                    android:id="@+id/heart_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -428,7 +472,8 @@
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="0dp" />
 
-                <ImageView
+                <ImageButton
+                    android:id="@+id/eye_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -468,7 +513,8 @@
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="0dp" />
 
-                <ImageView
+                <ImageButton
+                    android:id="@+id/tooth_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -507,7 +553,8 @@
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="0dp" />
 
-                <ImageView
+                <ImageButton
+                    android:id="@+id/ear_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -546,7 +593,8 @@
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="0dp" />
 
-                <ImageView
+                <ImageButton
+                    android:id="@+id/stomath_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -586,7 +634,8 @@
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="0dp" />
 
-                <ImageView
+                <ImageButton
+                    android:id="@+id/baby_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -628,8 +677,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageView2"
+                <ImageButton
+                    android:id="@+id/nose_button"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"

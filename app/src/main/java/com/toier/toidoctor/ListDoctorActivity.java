@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -33,7 +35,13 @@ public class ListDoctorActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listView);
 
-        showHospitalDialog();
+        Button buttonFilter = findViewById(R.id.filter);
+        buttonFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHospitalDialog();
+            }
+        });
 
         onListViewSearch();
     }
@@ -55,33 +63,75 @@ public class ListDoctorActivity extends AppCompatActivity {
                    }
                }
            }
+
+            DoctorAdapter adapter = new DoctorAdapter(this, doctorList);
+            listView.setAdapter(adapter);
+
+            adapter.notifyDataSetChanged();
+
+            SearchView searchView = findViewById(R.id.searchView);
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    adapter.getFilter().filter(s);
+                    return false;
+                }
+            });
+
+            ImageButton eyeButton = findViewById(R.id.eye_button);
+            imageButtonActive(eyeButton, doctorList, filterList, "Mắt");
+
+            ImageButton heartButton = findViewById(R.id.heart_button);
+            imageButtonActive(heartButton, doctorList, filterList, "Tim mạch");
+
+            ImageButton toothButton = findViewById(R.id.tooth_button);
+            imageButtonActive(toothButton, doctorList, filterList, "Răng");
+
+            ImageButton earButton = findViewById(R.id.ear_button);
+            imageButtonActive(earButton, doctorList, filterList, "Tai");
+
+            ImageButton stomathButton = findViewById(R.id.stomath_button);
+            imageButtonActive(stomathButton, doctorList, filterList, "Dạ dày");
+
+            ImageButton babyButton = findViewById(R.id.baby_button);
+            imageButtonActive(babyButton, doctorList, filterList, "Khoa nhi");
+
+            ImageButton noseButton = findViewById(R.id.nose_button);
+            imageButtonActive(noseButton, doctorList, filterList, "Mũi");
+
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Doctor doctor = adapter.getItem(i);
+                    //adapter.showDoctorInfoDialog(doctor);
+                    Intent intent = new Intent(ListDoctorActivity.this, BookingClinicActivity.class);
+                    intent.putExtra("KEY_VALUE", doctor.getID());
+                    startActivity(intent);
+                }
+            });
         });
+    }
 
-
-        DoctorAdapter adapter = new DoctorAdapter(this, doctorList);
-        ListView listView1 = findViewById(R.id.listViewSearch);
-        listView1.setAdapter(adapter);
-
-        SearchView searchView = findViewById(R.id.searchView);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+    private void imageButtonActive(ImageButton button, List<Doctor> doctorList, List<Doctor> filterList, String text) {
+        filterList.clear();
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
+            public void onClick(View view) {
+                for (Doctor doctor : doctorList) {
+                    if (doctor.getMajor().equals(text)) {
+                        filterList.add(doctor);
+                    }
+                }
 
-            @Override
-            public boolean onQueryTextChange(String s) {
-//                List<Doctor> filteredDoctors = new ArrayList<>();
-//                for (Doctor doctor : doctorList) {
-//                    if (doctor.getName().toLowerCase().contains(s.toLowerCase())) {
-//                        filteredDoctors.add(doctor);
-//                    }
-//                }
-//                adapter.clear();
-//                adapter.addAll(filteredDoctors);
-//                adapter.notifyDataSetChanged();
-                adapter.getFilter().filter(s);
-                return false;
+                DoctorAdapter adapter = new DoctorAdapter(ListDoctorActivity.this, filterList);
+                listView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
         });
     }

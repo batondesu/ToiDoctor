@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -15,40 +16,43 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoctorAdapter extends ArrayAdapter<Doctor> {
+public class DoctorAdapter extends ArrayAdapter<Doctor> implements Filterable {
 
-    private class DoctorFilter extends Filter {
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                FilterResults results = new FilterResults();
+                List<Doctor> filteredList = new ArrayList<>();
 
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            FilterResults results = new FilterResults();
-            List<Doctor> filteredList = new ArrayList<>();
+                // Nếu từ khoá tìm kiếm là null hoặc rỗng, hiển thị toàn bộ danh sách
+                if (constraint == null || constraint.length() == 0) {
+                    filteredList.addAll(doctorList);
+                } else {
+                    String filterPattern = constraint.toString().toLowerCase().trim();
 
-            if (constraint == null || constraint.length() == 0) {
-                // Nếu không có từ khoá tìm kiếm, hiển thị toàn bộ danh sách
-                filteredList.addAll(doctorList);
-            } else {
-                // Nếu có từ khoá tìm kiếm, lọc danh sách theo từ khoá
-                String filterPattern = constraint.toString().toLowerCase().trim();
-                for (Doctor doctor : doctorList) {
-                    if (doctor.getName().toLowerCase().contains(filterPattern)) {
-                        filteredList.add(doctor);
+                    // Lọc danh sách bác sĩ có chứa từ khoá
+                    for (Doctor doctor : doctorList) {
+                        if (doctor.getName().toLowerCase().contains(filterPattern) ||
+                                doctor.getName().toLowerCase().contains(filterPattern)) {
+                            filteredList.add(doctor);
+                        }
                     }
                 }
+
+                results.values = filteredList;
+                results.count = filteredList.size();
+                return results;
             }
 
-            results.values = filteredList;
-            results.count = filteredList.size();
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            // Cập nhật danh sách hiển thị sau khi lọc
-            clear();
-            addAll((List<Doctor>) results.values);
-            notifyDataSetChanged();
-        }
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                // Cập nhật danh sách bác sĩ hiển thị trên ListView
+                clear();
+                addAll((List<Doctor>) results.values);
+                notifyDataSetChanged();
+            }
+        };
     }
 
     private List<Doctor> doctorList;
@@ -77,28 +81,6 @@ public class DoctorAdapter extends ArrayAdapter<Doctor> {
 
 
         return convertView;
-    }
-
-    public void showDoctorInfoDialog(Doctor doctor) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle(doctor.getName());
-        builder.setMessage("Khoa khám: " + doctor.getMajor() + "\nID: " + doctor.getID() + "\nRate: " + doctor.getRate() + "\nReview: " + doctor.getReview()
-        + "\nAddress: " + doctor.getAddress());
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-
-    public void updateList(List<Doctor> newList) {
-        this.doctorList = newList;
-        notifyDataSetChanged();
     }
 }
 
