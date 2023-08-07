@@ -32,6 +32,8 @@ public class MainHomeController {
     private Context context;
 
     private ArrayList<Doctor> listDoctor1;
+    private ArrayList<patient> listPatient;
+    private ArrayList<Appointment> listApp;
 
     private Date d;
 
@@ -39,28 +41,30 @@ public class MainHomeController {
     public MainHomeController(Context context) {
         this.context = context;
         this.listDoctor1 = new ArrayList<>();
+        this.listPatient = new ArrayList<>();
+        this.listApp = new ArrayList<>();
     }
 
 
     // Hàm để lấy dữ liệu Doctor từ Firestore và thêm vào listDoctor
     public void fetchDoctorsFromFirestore(ListView listView) {
         List<Doctor> top = new ArrayList<Doctor>();
+        //Log.d("XXX" , "dm e DangLeHai"  );
         // Truy cập vào collection "doctors" trong Firestore
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference doctorsRef = db.collection("Doctors");
+        FirebaseFirestore db1 = FirebaseFirestore.getInstance();
+        CollectionReference doctorsRef1 = db1.collection("Doctors");
 
-        doctorsRef.get()
+        doctorsRef1.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
                 if (task.isSuccessful()) {
-                    QuerySnapshot querySnapshot = task.getResult();
-                    if (querySnapshot != null && !querySnapshot.isEmpty()) {
-                        //listDoctor.clear(); // Xóa danh sách hiện tại để tránh trùng lặp
-                        for (DocumentSnapshot document : querySnapshot.getDocuments()) {
-                            //Log.d("XXX" , "dm e DangLeHai"  );
-
+                    QuerySnapshot querySnapshot2 = task.getResult();
+                    Log.d("XXX" , "dm e DangLeHai2"  );
+                    if (querySnapshot2 != null && !querySnapshot2.isEmpty()) {
+                        Log.d("XXX" , "dm e DangLeHai"  );
+                        for (DocumentSnapshot document : querySnapshot2.getDocuments()) {
 
                             // Lấy dữ liệu từ Firestore và tạo đối tượng Doctor
                             Doctor doctor = new Doctor();
@@ -117,6 +121,85 @@ public class MainHomeController {
         });
     }
 
+    public void fetchPatientFromFirestore(String ID, ListView listView) {
+        int[] check = new int[100];
+        // Truy cập vào collection "doctors" trong Firestore
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db1 = FirebaseFirestore.getInstance();
+        CollectionReference doctorsRef = db.collection("Appointments");
+        CollectionReference patientRef = db1.collection("Patients");
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+
+        doctorsRef.whereEqualTo("doctor_id", ID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            QuerySnapshot querySnapshot = task.getResult();
+                            if (querySnapshot != null && !querySnapshot.isEmpty()) {
+                                //listDoctor.clear(); // Xóa danh sách hiện tại để tránh trùng lặp
+                                for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                                    //Log.d("XXX" , "dm e DangLeHai"  );
+                                    Timestamp cur = document.getTimestamp("time");
+                                    if ( date.after(cur.toDate()) ) {
+                                        String patient_id = document.getString("patient_id").toString();
+                                        int auto = Integer.valueOf(patient_id);
+                                        if ( check[auto] != 1) {
+                                            Log.d("IOS", patient_id);
+                                            patientRef.whereEqualTo("ID", patient_id)
+                                                    .get()
+                                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<QuerySnapshot> task1) {
+                                                            if (task1.isSuccessful()) {
+                                                                QuerySnapshot querySnapshot1 = task1.getResult();
+                                                                if (querySnapshot1 != null && !querySnapshot1.isEmpty()) {
+                                                                    //listDoctor.clear(); // Xóa danh sách hiện tại để tránh trùng lặp
+                                                                    for (DocumentSnapshot document1 : querySnapshot1.getDocuments()) {
+                                                                        patient patient1 = new patient();
+                                                                        patient1.setPhoneNumber(document1.getString("phone"));
+                                                                        patient1.setName(document1.getString("name").toString());
+                                                                        long res = document1.getLong("age");
+                                                                        //Log.d("IOS", String.valueOf(res));
+                                                                        patient1.setAge((int) res);
+                                                                        listPatient.add(patient1);
+                                                                    }
+                                                                    //set listView
+                                                                    ListPatient listPatientAdapter = new ListPatient(context, listPatient);
+
+                                                                    listView.setAdapter(listPatientAdapter);
+                                                                /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                                                    @Override
+                                                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                                                        Doctor doctor  = (Doctor) listPatientAdapter.getItem(position);
+                                                                        Intent intent = new Intent(context, BookingClinicActivity.class);
+                                                                        intent.putExtra("KEY_VALUE", doctor.getID());
+                                                                        context.startActivity(intent);
+                                                                    }
+                                                                });*/
+                                                                }
+                                                            }
+                                                        }
+                                                    });
+                                            check[auto] = 1;
+                                        }
+                                    }
+
+                                }
+                                //Log.d("ABC", String.format("Size: %d",listDoctor1.size()) );
+                            } else {
+                                // Không có dữ liệu trong collection "doctors"
+                            }
+                        } else {
+                            // Xử lý lỗi khi lấy dữ liệu từ Firestore
+                        }
+                    }
+                });
+    }
+
     public interface OnAppointmentDataListener {
         void onAppointmentDataReceived(Appointment appointment);
 
@@ -165,6 +248,104 @@ public class MainHomeController {
                                 }
                                 listener.onAppointmentDataReceived(schedule);
                             }
+                        }
+                    }
+                });
+    }
+
+
+    public interface OnPatientDataListener {
+        void onPatientDataReceived(patient patient);
+
+        void onPatientDataError(String errorMessage);
+    }
+
+    public void getPatientData(String patientID, MainHomeController.OnPatientDataListener listener) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Patients")
+                .whereEqualTo("ID", patientID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            QuerySnapshot querySnapshot = task.getResult();
+                            if (querySnapshot != null && !querySnapshot.isEmpty()) {
+                                //listDoctor.clear(); // Xóa danh sách hiện tại để tránh trùng lặp
+                                for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+
+                                    //get thong tin doctor
+                                    patient patient1 = new patient();
+
+                                    patient1.setName(document.getString("name").toString());
+                                    patient1.setPhoneNumber(document.getString("phone").toString());
+                                    long res = document.getLong("age");
+                                    patient1.setAge((int) res);
+
+                                    listener.onPatientDataReceived(patient1);
+                                    //Log.d("XXX", doctor.getName().toString());
+                                }
+
+                            } else {
+                                //listener.onDoctorDataError("Không tìm thấy thông tin Doctor");
+                            }
+                        } else {
+                            //listener.onDoctorDataError("Lỗi khi lấy dữ liệu từ Firestore");
+                        }
+                    }
+                });
+    }
+
+    public void fetchAppointFromFirestore(ListView listView) {
+        List<Appointment> top = new ArrayList<Appointment>();
+        //Log.d("XXX" , "dm e DangLeHai"  );
+
+        Calendar calendar = Calendar.getInstance();
+        Date d = calendar.getTime();
+
+        // Truy cập vào collection "doctors" trong Firestore
+        FirebaseFirestore db1 = FirebaseFirestore.getInstance();
+        CollectionReference doctorsRef1 = db1.collection("Appointments");
+
+        doctorsRef1.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            QuerySnapshot querySnapshot2 = task.getResult();
+                            //Log.d("XXX" , "dm e DangLeHai2"  );
+                            if (querySnapshot2 != null && !querySnapshot2.isEmpty()) {
+                                //Log.d("XXX" , "dm e DangLeHai"  );
+                                for (DocumentSnapshot document : querySnapshot2.getDocuments()) {
+                                    if (document.getTimestamp("time") != null) {
+                                        Timestamp cur = document.getTimestamp("time");
+                                        //Log.d("CCC", String.format("%d",schedule.getTimestamp().compareTo(cur)));
+                                        //Log.d("CCC", schedule.getTimestamp().toDate().toString());
+                                        if (d.before(cur.toDate())) {
+                                            Appointment schedule = new Appointment();
+                                            schedule.setTimestamp(cur);
+                                            schedule.setDoctor_id(document.get("doctor_id").toString());
+                                            schedule.setPatient_id(document.get("patient_id").toString());
+                                            listApp.add(schedule);
+                                        }
+                                    }
+                                }
+                                //Log.d("ABC", String.format("Size: %d",listDoctor1.size()) );
+                                Collections.sort(listApp, new Comparator<Appointment>() {
+                                    @Override
+                                    public int compare(Appointment appointment, Appointment t1) {
+                                        return appointment.getTimestamp().compareTo(t1.getTimestamp());
+                                    }
+                                });
+                                ClinnicApdater listAdapter = new ClinnicApdater(context, listApp);
+                                listView.setAdapter(listAdapter);
+                            } else {
+                                // Không có dữ liệu trong collection "doctors"
+                            }
+                        } else {
+                            // Xử lý lỗi khi lấy dữ liệu từ Firestore
                         }
                     }
                 });

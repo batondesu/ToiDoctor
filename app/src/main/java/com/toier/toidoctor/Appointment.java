@@ -6,6 +6,7 @@ public class Appointment {
     private String doctor_id;
     private String patient_id;
     private String schedule;
+    private Boolean notice;
 
     private Timestamp timestamp;
     public Appointment(){
@@ -43,4 +44,11 @@ public class Appointment {
         this.timestamp = timestamp;
     }
 
+    public void setNotice(boolean notice) {
+        this.notice = notice;
+    }
+
+    public boolean isNotice() {
+        return notice;
+    }
 }

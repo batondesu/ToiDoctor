@@ -6,6 +6,19 @@ public class patient {
     private String phoneNumber;
     private String id;
 
+    private int age;
+
+    public patient(){
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
     public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
