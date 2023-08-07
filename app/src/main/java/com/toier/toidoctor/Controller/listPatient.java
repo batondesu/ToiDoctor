@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.toier.toidoctor.Doctor;
 import com.toier.toidoctor.R;
 
 import java.util.ArrayList;
@@ -15,9 +14,9 @@ import java.util.List;
 
 public class ListPatient extends BaseAdapter {
     private Context context;
-    private List<patient> patientList;
+    private List<Patient> patientList;
 
-    public ListPatient(Context context, ArrayList<patient> patientList) {
+    public ListPatient(Context context, ArrayList<Patient> patientList) {
         this.context = context;
         this.patientList = patientList;
     }
@@ -46,7 +45,7 @@ public class ListPatient extends BaseAdapter {
         } else viewProduct = convertView;
 
 
-        patient patient1 = patientList.get(position);
+        Patient patient1 = patientList.get(position);
 
         Log.d("UIX", patient1.getName());
 

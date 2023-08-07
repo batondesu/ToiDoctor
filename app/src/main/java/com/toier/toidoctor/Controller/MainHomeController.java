@@ -32,7 +32,7 @@ public class MainHomeController {
     private Context context;
 
     private ArrayList<Doctor> listDoctor1;
-    private ArrayList<patient> listPatient;
+    private ArrayList<Patient> listPatient;
     private ArrayList<Appointment> listApp;
 
     private Date d;
@@ -159,7 +159,7 @@ public class MainHomeController {
                                                                 if (querySnapshot1 != null && !querySnapshot1.isEmpty()) {
                                                                     //listDoctor.clear(); // Xóa danh sách hiện tại để tránh trùng lặp
                                                                     for (DocumentSnapshot document1 : querySnapshot1.getDocuments()) {
-                                                                        patient patient1 = new patient();
+                                                                        Patient patient1 = new Patient();
                                                                         patient1.setPhoneNumber(document1.getString("phone"));
                                                                         patient1.setName(document1.getString("name").toString());
                                                                         long res = document1.getLong("age");
@@ -255,7 +255,7 @@ public class MainHomeController {
 
 
     public interface OnPatientDataListener {
-        void onPatientDataReceived(patient patient);
+        void onPatientDataReceived(Patient patient);
 
         void onPatientDataError(String errorMessage);
     }
@@ -276,7 +276,7 @@ public class MainHomeController {
                                 for (DocumentSnapshot document : querySnapshot.getDocuments()) {
 
                                     //get thong tin doctor
-                                    patient patient1 = new patient();
+                                    Patient patient1 = new Patient();
 
                                     patient1.setName(document.getString("name").toString());
                                     patient1.setPhoneNumber(document.getString("phone").toString());
@@ -339,8 +339,6 @@ public class MainHomeController {
                                         return appointment.getTimestamp().compareTo(t1.getTimestamp());
                                     }
                                 });
-                                ClinnicApdater listAdapter = new ClinnicApdater(context, listApp);
-                                listView.setAdapter(listAdapter);
                             } else {
                                 // Không có dữ liệu trong collection "doctors"
                             }

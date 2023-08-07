@@ -11,7 +11,6 @@ import androidx.core.app.NotificationManagerCompat;
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -34,13 +33,10 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.MetadataChanges;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.auth.User;
 import com.toier.toidoctor.controller.BookingController;
-import com.toier.toidoctor.controller.ListPatient;
 import com.toier.toidoctor.controller.MainHomeController;
-import com.toier.toidoctor.controller.patient;
+import com.toier.toidoctor.controller.Patient;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -58,8 +54,8 @@ public class MainHomeActivity extends AppCompatActivity {
     private ConstraintLayout booking;
     private ConstraintLayout medicalRecord;
 
-    private boolean XXX = true;
-    private String ID = "4";
+    private boolean XXX = false;
+    private String ID = "0363912803";
     private Date date;
 
     @SuppressLint("MissingInflatedId")
@@ -69,9 +65,7 @@ public class MainHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_home);
         //createNotificationChannel();
-        
-        
-        
+
         MainHomeController listDoctorController = new MainHomeController(this);
         if (!XXX) {
             //Log.d("BUG", "vcvc");
@@ -170,7 +164,7 @@ public class MainHomeActivity extends AppCompatActivity {
             listDoctorController.fetchDoctorsFromFirestore(listView);
         } else {
 
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            /*FirebaseFirestore db = FirebaseFirestore.getInstance();
             CollectionReference appointmentsRef = db.collection("Appointments"); // Thay "appointments" bằng tên collection của bạn
             appointmentsRef.addSnapshotListener(MetadataChanges.INCLUDE, new EventListener<QuerySnapshot>() {
                 @Override
@@ -197,7 +191,7 @@ public class MainHomeActivity extends AppCompatActivity {
                         }
                     }
                 }
-            });
+            });*/
 
             LinearLayout parentLayout = (LinearLayout) findViewById(R.id.linearLayout);
             // Sử dụng LayoutInflater để tạo một đối tượng View từ layout con (child_layout.xml)
@@ -256,12 +250,12 @@ public class MainHomeActivity extends AppCompatActivity {
                 }
             });
 
-            TextView tv = (TextView) findViewById(R.id.top_dr);
+            /*TextView tv = (TextView) findViewById(R.id.top_dr);
             tv.setText("Danh sách bệnh nhân");
 
             // Tìm ListView trong layout và thiết lập Adapter cho nó
             ListView listView = findViewById(R.id.listdoctor);
-            listDoctorController.fetchPatientFromFirestore(ID, listView);
+            listDoctorController.fetchPatientFromFirestore(ID, listView);*/
         }
 
 
@@ -298,7 +292,7 @@ public class MainHomeActivity extends AppCompatActivity {
         MainHomeController control = new MainHomeController(this);
         control.getPatientData(ID, new MainHomeController.OnPatientDataListener() {
             @Override
-            public void onPatientDataReceived(patient patient) {
+            public void onPatientDataReceived(Patient patient) {
                 TextView patientName = findViewById(R.id.home_name);
                 patientName.setText(patient.getName());
 
@@ -318,10 +312,7 @@ public class MainHomeActivity extends AppCompatActivity {
 
 
     private void showNotification(Timestamp timestamp, boolean XXX) {
-        // Tạo PendingIntent cho việc khi người dùng nhấn vào thông báo sẽ mở một Activity hay Fragment cụ thể
-        Intent intent = new Intent(this, NotiActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        //PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
         String s = "";
         if ( XXX ) {
             s = "Bạn có một bệnh nhân mới";

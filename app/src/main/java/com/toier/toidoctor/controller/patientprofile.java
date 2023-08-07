@@ -1,8 +1,5 @@
 package com.toier.toidoctor.controller;
 
-import com.google.firebase.firestore.DocumentReference;
-import static android.content.ContentValues.TAG;
-
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.Log;
@@ -14,27 +11,18 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.core.FirestoreClient;
 import com.toier.toidoctor.R;
 
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import com.toier.toidoctor.controller.patient;
+
 public class patientprofile {
 
-    private static ArrayList<patient> patients = new ArrayList<patient>();
+    private static ArrayList<Patient> Patients = new ArrayList<Patient>();
 
     public static Button createButton(Context context, Button btnTag, String id , String name) {
         btnTag.setCompoundDrawablesWithIntrinsicBounds(R.drawable.profile_icon, 0, 0, 0);
@@ -86,14 +74,14 @@ public class patientprofile {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                     //Log.d("ABC", document.getId() + " => " + document.getData());
-                                    patient eachPatient = new patient();
+                                    Patient eachPatient = new Patient();
                                     eachPatient.setId(document.getId());
                                     eachPatient.setBirthday(String.valueOf(document.getData().get("birthday")));
                                     eachPatient.setName(String.valueOf(document.getData().get("name")));
                                     eachPatient.setPhoneNumber(String.valueOf(document.getData().get("phoneNumber")));
-                                    patients.add(eachPatient);
+                                    Patients.add(eachPatient);
                             }
-                            Log.d("ABC", patients.get(1).getName());
+                            Log.d("ABC", Patients.get(1).getName());
 
 
 

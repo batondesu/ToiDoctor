@@ -1,6 +1,6 @@
 package com.toier.toidoctor.controller;
 
-public class patient {
+public class Patient {
     private String name;
     private String birthday;
     private String phoneNumber;
@@ -8,7 +8,7 @@ public class patient {
 
     private int age;
 
-    public patient(){
+    public Patient(){
     }
 
     public void setAge(int age) {
