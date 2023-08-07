@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -15,6 +16,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.toier.toidoctor.enums.Role;
 import com.toier.toidoctor.enums.Sex;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +28,8 @@ public class UserController {
     private String email;
     private Role role;
     private Sex sex;
+
+    private Date birthday;
 
     private static UserController instance;
 
@@ -46,11 +50,13 @@ public class UserController {
 
     public void createUser() {
         Map<String, Object> user = new HashMap<>();
+        user.put("name", name);
         user.put("phoneNumber", phoneNumber);
         user.put("password", password);
         user.put("email", email);
         user.put("role", role.toString());
         user.put("sex", sex.toString());
+        user.put("birthday", new Timestamp(birthday));
 
         db.collection("Users")
                 .add(user)
@@ -68,11 +74,12 @@ public class UserController {
                 });
     }
 
-    public void addInfo(String name, String email, Sex sex) {
+    public void addInfo(String name, String email, Sex sex, Date date) {
         this.name = name;
         this.email = email;
         this.role = Role.PATIENT;
         this.sex = sex;
+        this.birthday = date;
     }
 
     public void checkVerificationUser(String phone, String password, FirestoreCallback firestoreCallback) {
@@ -124,11 +131,13 @@ public class UserController {
                             if (task.getResult() != null) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Log.d(TAG, document.getId() + " => " + document.getData());
+                                    name = document.getString("name");
                                     phoneNumber = document.getString("phoneNumber");
                                     password = document.getString("password");
                                     email = document.getString("email");
                                     role = Role.getRole(document.getString("role"));
                                     sex = Sex.getSex(document.getString("sex"));
+                                    birthday = document.getTimestamp("birthday").toDate();
                                     Log.d(TAG, phoneNumber + " + " + password + " + " + email + " + " + role + " + " + sex);
                                 }
                             }

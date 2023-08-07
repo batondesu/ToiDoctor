@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.toier.toidoctor.controller.UserController;
@@ -62,7 +63,7 @@ public class SignUpFragment extends Fragment {
                                         @Override
                                         public void checkExistUser(boolean ok) {
                                             if (ok) {
-                                                // Exited User
+                                                Toast.makeText(mLoginActivity, "Số điện thoại đã được sử dụng!", Toast.LENGTH_SHORT).show();
                                             } else {
                                                 UserController.getInstance().addPhoneAndPassword(editTextEnterPhone.getText().toString(), editTextEnterPassword.getText().toString());
                                                 mLoginActivity.transactionToFragment(TypeFragment.INFO);
@@ -84,9 +85,17 @@ public class SignUpFragment extends Fragment {
     }
 
     private boolean checkForm() {
-        if (!editTextEnterPassword.getText().toString().equals(editTextReEnterPassword.getText().toString())) {
+        if (editTextEnterPhone.getText().toString().length() < 9) {
+            Toast.makeText(mLoginActivity, "Số điện thoại không tồn tại!", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (editTextEnterPassword.getText().toString().length() < 6) {
+            Toast.makeText(mLoginActivity, "Mật khẩu quá ngắn!", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (!editTextEnterPassword.getText().toString().equals(editTextReEnterPassword.getText().toString())) {
+            Toast.makeText(mLoginActivity, "Mật khẩu nhập lại chưa đúng!", Toast.LENGTH_SHORT).show();
             return false;
         } else if (!checkBoxAgreeTerm.isChecked()) {
+            Toast.makeText(mLoginActivity, "Bạn chưa đồng ý với điều khoản dịch vụ!", Toast.LENGTH_SHORT).show();
             return false;
         }
 

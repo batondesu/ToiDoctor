@@ -62,7 +62,7 @@ public class SignInFragment extends Fragment {
                                             mLoginActivity.transactionToMainHome();
                                             UserController.getInstance().getCurrentUserFromDB(editTextEnterPhone.getText().toString());
                                         } else {
-                                            // not allow login
+                                            Toast.makeText(mLoginActivity, "Số điện thoại hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
@@ -78,7 +78,6 @@ public class SignInFragment extends Fragment {
 
         return root;
     }
-
     private void AllowUserToLogin() {
         String phone = editTextEnterPhone.getText().toString().trim();
         String pwd = editTextEnterPassword.getText().toString();
