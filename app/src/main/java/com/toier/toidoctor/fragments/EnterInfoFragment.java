@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.toier.toidoctor.controller.UserController;
@@ -99,9 +100,21 @@ public class EnterInfoFragment extends Fragment {
         mLoginActivity.getBtnLogin().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mLoginActivity.sendVerificationCode(formatPhoneNumber(UserController.getInstance().getPhoneNumber()));
-                UserController.getInstance().addInfo(editTextEnterName.getText().toString(), editTextEnterEmail.getText().toString(), (sex == 1 ? Sex.MALE : Sex.FEMALE));
-                mLoginActivity.transactionToFragment(TypeFragment.VERIFICATION_CODE);
+                if (editTextEnterName.getText().toString().isEmpty()) {
+                    Toast.makeText(mLoginActivity, "Bạn chưa nhập tên!", Toast.LENGTH_SHORT).show();
+                } else if (sex == 0) {
+                    Toast.makeText(mLoginActivity, "Bạn chưa chọn giới tính!", Toast.LENGTH_SHORT).show();
+                } else if (textViewSchedule.getText().toString().equals("DD/MM\nYYYY")) {
+                    Toast.makeText(mLoginActivity, "Bạn chưa chọn ngày sinh!", Toast.LENGTH_SHORT).show();
+                } else {
+                        mLoginActivity.sendVerificationCode(formatPhoneNumber(UserController.getInstance().getPhoneNumber()));
+                        UserController.getInstance().addInfo(
+                                editTextEnterName.getText().toString(),
+                                editTextEnterEmail.getText().toString(),
+                                (sex == 1 ? Sex.MALE : Sex.FEMALE),
+                                calendar.getTime());
+                        mLoginActivity.transactionToFragment(TypeFragment.VERIFICATION_CODE);
+                }
             }
         });
 

@@ -18,4 +18,5 @@
     <color name="secondary_3">#E0EAF9</color>
     <color name="secondary_4">#FFE2DC</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
 </resources>
