@@ -16,12 +16,10 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.toier.toidoctor.Controller.patientprofile;
-import com.toier.toidoctor.controller.UserController;
+import com.toier.toidoctor.controllers.PatientProfile;
+import com.toier.toidoctor.controllers.UserController;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class PatientProfileActivity extends AppCompatActivity {
     private Button button;
@@ -29,7 +27,7 @@ public class PatientProfileActivity extends AppCompatActivity {
 
     private void setButton(String id, String name, String phoneNumber) {
         Button btnTest =  new Button(this);
-        btnTest = patientprofile.createButton(this, btnTest, id, name);
+        btnTest = PatientProfile.createButton(this, btnTest, id, name);
         LinearLayout layout = (LinearLayout) findViewById(R.id.patientList);
         layout.addView(btnTest);
         FirebaseFirestore db = FirebaseFirestore.getInstance();

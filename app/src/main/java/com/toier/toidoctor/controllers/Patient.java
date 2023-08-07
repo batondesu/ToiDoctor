@@ -1,6 +1,6 @@
-package com.toier.toidoctor.controller;
+package com.toier.toidoctor.controllers;
 
-public class patient {
+public class Patient {
     private String name;
     private String birthday;
     private String phoneNumber;

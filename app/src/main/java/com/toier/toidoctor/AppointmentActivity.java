@@ -9,11 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.toier.toidoctor.controller.BookingController;
 import com.toier.toidoctor.R.id;
 import com.toier.toidoctor.R.layout;
 
 import com.google.firebase.Timestamp;
+import com.toier.toidoctor.controllers.BookingController;
 
 public class AppointmentActivity extends AppCompatActivity {
     private TextView tvDisplayDateTime;

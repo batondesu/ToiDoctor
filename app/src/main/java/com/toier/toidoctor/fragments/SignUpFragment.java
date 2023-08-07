@@ -12,9 +12,9 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.toier.toidoctor.controller.UserController;
 import com.toier.toidoctor.LoginActivity;
 import com.toier.toidoctor.R;
+import com.toier.toidoctor.controllers.UserController;
 import com.toier.toidoctor.enums.TypeFragment;
 
 public class SignUpFragment extends Fragment {

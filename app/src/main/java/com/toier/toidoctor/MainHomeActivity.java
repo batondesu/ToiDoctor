@@ -12,8 +12,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.toier.toidoctor.controller.BookingController;
-import com.toier.toidoctor.controller.MainHomeController;
+import com.toier.toidoctor.controllers.BookingController;
+import com.toier.toidoctor.controllers.MainHomeController;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;

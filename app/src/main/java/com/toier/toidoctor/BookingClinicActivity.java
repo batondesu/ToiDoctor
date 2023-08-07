@@ -5,43 +5,29 @@
 
 package com.toier.toidoctor;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.*;
 import android.view.View;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.*;
-import com.google.android.material.chip.Chip;
-import com.google.android.material.chip.ChipGroup;
-import com.google.errorprone.annotations.FormatString;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.*;
-import com.toier.toidoctor.controller.BookingController;
 import com.toier.toidoctor.R.id;
 import com.toier.toidoctor.R.layout;
-
-import org.checkerframework.checker.units.qual.C;
+import com.toier.toidoctor.controllers.BookingController;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 
 public class BookingClinicActivity extends AppCompatActivity {

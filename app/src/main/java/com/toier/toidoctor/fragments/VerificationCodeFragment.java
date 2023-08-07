@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.toier.toidoctor.controller.UserController;
 import com.toier.toidoctor.LoginActivity;
 import com.toier.toidoctor.R;
+import com.toier.toidoctor.controllers.UserController;
 
 public class VerificationCodeFragment extends Fragment {
     private LoginActivity mLoginActivity;

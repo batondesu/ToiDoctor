@@ -18,7 +18,7 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.toier.toidoctor.Controller.patientMedicalRecord;
+import com.toier.toidoctor.controllers.PatientMedicalRecord;
 
 import java.util.Date;
 
@@ -26,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button isChoosed;
     private void setButton(String id, String time, String detail) {
         Button btnTest =  new Button(this);
-        final Button btnTest_v = patientMedicalRecord.createButton(this, btnTest, id, time);
+        final Button btnTest_v = PatientMedicalRecord.createButton(this, btnTest, id, time);
         btnTest_v.setBackgroundResource(R.drawable.rectangle6);
         LinearLayout layout = (LinearLayout) findViewById(R.id.updatedDate);
         layout.addView(btnTest);

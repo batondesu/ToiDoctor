@@ -1,41 +1,14 @@
-package com.toier.toidoctor.Controller;
-
-import com.google.firebase.firestore.DocumentReference;
-import static android.content.ContentValues.TAG;
+package com.toier.toidoctor.controllers;
 
 import android.content.Context;
-import android.graphics.Typeface;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.core.FirestoreClient;
-import com.toier.toidoctor.R;
-
-import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import com.toier.toidoctor.controller.patient;
-public class patientMedicalRecord {
 
-    private static ArrayList<patient> patients = new ArrayList<patient>();
+public class PatientMedicalRecord {
+    private static ArrayList<Patient> patients = new ArrayList<Patient>();
 
     public static Button createButton(Context context, Button btnTest, String id, String time) {
         int whiteColor = 0xFFFFFFFF;
@@ -58,7 +31,4 @@ public class patientMedicalRecord {
         btnTest.setTag(tagString);
         return btnTest;
     }
-
-
-
 }

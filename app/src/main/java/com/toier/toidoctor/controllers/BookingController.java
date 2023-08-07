@@ -1,15 +1,21 @@
-package com.toier.toidoctor.controller;
+package com.toier.toidoctor.controllers;
 
 import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.*;
-import com.google.firebase.firestore.*;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.toier.toidoctor.Doctor;
 
-import com.google.firebase.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -23,7 +29,7 @@ public class BookingController {
     }
 
     // Phương thức này để lấy thông tin Doctor từ Firestore
-    public void getDoctorData(String doctorId, OnDoctorDataListener listener) {
+    public void getDoctorData(String doctorId, com.toier.toidoctor.controllers.BookingController.OnDoctorDataListener listener) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Doctors")
                 .whereEqualTo("ID", doctorId)
@@ -87,19 +93,19 @@ public class BookingController {
 
         // Add a new document with a generated ID
         db.collection("Appointments")
-            .add(user)
-            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                @Override
-                public void onSuccess(DocumentReference documentReference) {
-                    Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w("TAG", "Error adding document", e);
-                }
-            });
+                .add(user)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("TAG", "Error adding document", e);
+                    }
+                });
     }
 
 
