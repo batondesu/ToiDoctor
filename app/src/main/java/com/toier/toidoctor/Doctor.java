@@ -1,22 +1,13 @@
 package com.toier.toidoctor;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.*;
-
 import java.io.Serializable;
-import java.util.List;
 
 public class Doctor implements Serializable {
     String name;
     String major;
     double rate;
     int review;
-    String doctor_ID;
+    String ID;
 
     int exp;
     String hospital_name;
@@ -32,7 +23,7 @@ public class Doctor implements Serializable {
         this.rate = rate;
         this.major = major;
         this.review = review;
-        this.doctor_ID = doctor_ID;
+        this.ID = doctor_ID;
         this.patient = patient;
         this.exp = exp;
         this.address = address;
@@ -64,12 +55,12 @@ public class Doctor implements Serializable {
         return patient;
     }
 
-    public void setDoctor_ID(String doctor_ID) {
-        this.doctor_ID = doctor_ID;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
-    public String getDoctor_ID() {
-        return doctor_ID;
+    public String getID() {
+        return ID;
     }
 
     public void setExp(int exp) {
@@ -119,5 +110,4 @@ public class Doctor implements Serializable {
     public void setReview(int review) {
         this.review = review;
     }
-
 }

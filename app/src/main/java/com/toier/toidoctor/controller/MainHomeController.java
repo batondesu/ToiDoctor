@@ -1,4 +1,4 @@
-package com.toier.toidoctor.controller;
+package com.toier.toidoctor.Controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.toier.toidoctor.BookingClinicActivity;
 import com.toier.toidoctor.Doctor;
+import com.toier.toidoctor.controller.ListDoctor;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,7 +47,7 @@ public class MainHomeController {
         doctorList1.add(new Doctor("John Doe", "Cardiologist", 1,1,"","","","",0,0));
         doctorList1.add(new Doctor("Jane Smith", "Pediatrician",1,1,"","","","",0,0));*/
 
-        ListDoctor listDoctorAdapter = new ListDoctor(context, listDoctor1);
+        com.toier.toidoctor.controller.ListDoctor listDoctorAdapter = new com.toier.toidoctor.controller.ListDoctor(context, listDoctor1);
         listView.setAdapter(listDoctorAdapter);
     }
 
@@ -72,7 +73,7 @@ public class MainHomeController {
 
                             // Lấy dữ liệu từ Firestore và tạo đối tượng Doctor
                             Doctor doctor = new Doctor();
-                            doctor.setDoctor_ID(document.get("ID").toString());
+                            doctor.setID(document.get("ID").toString());
                             doctor.setAbout_doctor(document.get("about_doctor").toString());
                             doctor.setName(document.get("name").toString());
                             doctor.setMajor(document.get("major").toString());
@@ -98,14 +99,14 @@ public class MainHomeController {
                                 return Double.compare(doctor2.getRate(), doctor1.getRate());
                             }
                         });
-                        ListDoctor listDoctorAdapter = new ListDoctor(context, listDoctor1);
+                        com.toier.toidoctor.controller.ListDoctor listDoctorAdapter = new ListDoctor(context, listDoctor1);
                         listView.setAdapter(listDoctorAdapter);
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 Doctor doctor  = (Doctor) listDoctorAdapter.getItem(position);
                                         Intent intent = new Intent(context, BookingClinicActivity.class);
-                                intent.putExtra("KEY_VALUE", doctor.getDoctor_ID());
+                                intent.putExtra("KEY_VALUE", doctor.getID());
                                 context.startActivity(intent);
                             }
                         });

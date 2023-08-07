@@ -1,20 +1,22 @@
 package com.toier.toidoctor;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,56 @@ public class ListDoctorActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
 
         showHospitalDialog();
+
+        onListViewSearch();
+    }
+
+    private void onListViewSearch() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference doctorRef = db.collection("Doctors");
+
+        List<Doctor> doctorList = new ArrayList<>();
+        List<Doctor> filterList = new ArrayList<>();
+
+        doctorRef.get().addOnCompleteListener(task -> {
+           if (task.isSuccessful()) {
+               QuerySnapshot querySnapshot = task.getResult();
+               if (querySnapshot != null) {
+                   for (QueryDocumentSnapshot document : querySnapshot) {
+                       Doctor doctor = document.toObject(Doctor.class);
+                       doctorList.add(doctor);
+                   }
+               }
+           }
+        });
+
+
+        DoctorAdapter adapter = new DoctorAdapter(this, doctorList);
+        ListView listView1 = findViewById(R.id.listViewSearch);
+        listView1.setAdapter(adapter);
+
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+//                List<Doctor> filteredDoctors = new ArrayList<>();
+//                for (Doctor doctor : doctorList) {
+//                    if (doctor.getName().toLowerCase().contains(s.toLowerCase())) {
+//                        filteredDoctors.add(doctor);
+//                    }
+//                }
+//                adapter.clear();
+//                adapter.addAll(filteredDoctors);
+//                adapter.notifyDataSetChanged();
+                adapter.getFilter().filter(s);
+                return false;
+            }
+        });
     }
 
     private void showHospitalDialog() {
@@ -104,21 +156,26 @@ public class ListDoctorActivity extends AppCompatActivity {
                 .orderBy("rate", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<com.toier.toiDoctorClass.DoctorClass> doctorList = new ArrayList<>();
+                    List<Doctor> doctorList = new ArrayList<>();
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                        com.toier.toiDoctorClass.DoctorClass doctor = document.toObject(com.toier.toiDoctorClass.DoctorClass.class);
+                        Doctor doctor = document.toObject(Doctor.class);
                         doctorList.add(doctor);
                     }
 
                     DoctorAdapter adapter = new DoctorAdapter(ListDoctorActivity.this, doctorList);
+                    listView.setAdapter(adapter);
 
-                    adapter.setOnDoctorClickListener(doctor -> {
-                        Intent intent = new Intent(ListDoctorActivity.this, BookingClinicActivity.class);
-                        intent.putExtra("selected_doctor", (CharSequence) doctor);
-                        startActivity(intent);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Doctor doctor = adapter.getItem(i);
+                            //adapter.showDoctorInfoDialog(doctor);
+                            Intent intent = new Intent(ListDoctorActivity.this, BookingClinicActivity.class);
+                            intent.putExtra("KEY_VALUE", doctor.getID());
+                            startActivity(intent);
+                        }
                     });
 
-                    listView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                 });
     }

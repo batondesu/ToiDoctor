@@ -59,37 +59,23 @@
 
         />
 
-    <LinearLayout
+    <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="174dp"
         android:layout_marginTop="90dp"
-        android:clickable="true"
-        android:focusable="true"
-        tools:ignore="UsingOnClickInXml">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/phone"
-            android:contentDescription="@string/button_image" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="50dp"
-        android:layout_height="50dp"
         android:layout_marginStart="124dp"
-        android:layout_marginTop="90dp"
-        android:clickable="true"
-        android:focusable="true"
-        tools:ignore="UsingOnClickInXml">
+        android:src="@drawable/message"
+        android:id="@+id/messageButton"
+        />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/message"
-            android:contentDescription="@string/button_image_message" />
-    </LinearLayout>
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginStart="174dp"
+        android:src="@drawable/phone"
+        android:id="@+id/phoneButton"
+        />
 
     <View
         android:layout_width="match_parent"

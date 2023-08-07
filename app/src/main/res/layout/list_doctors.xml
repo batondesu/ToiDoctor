@@ -26,9 +26,9 @@
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="23dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,18 +37,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/iconnoti"
-        />
+        android:contentDescription="TODO" />
 
     <TextView
         android:layout_width="280dp"
         android:layout_height="45dp"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="40dp"
         android:gravity="top"
         android:lineSpacingExtra="-14sp"
-        android:text="Danh sách Bác sĩ"
+        android:text="@string/doctorList_str"
         android:textSize="28sp"
         android:textAppearance="@style/TextView.Primary"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,6 +73,7 @@
         android:orientation="horizontal"
         tools:ignore="MissingConstraints">
 
+
         <SearchView
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,16 +81,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            android:id="@+id/searchPatient"
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_marginEnd="40dp"
             android:layout_height="match_parent"
             android:background="@drawable/rectangle"
             android:textAlignment="viewStart"
             android:textColor="#610909"
-            app:queryHint="WTF">
+            android:queryHint="Tìm kiếm bác sĩ hoặc khoa khám ..."
+        />
 
-        </SearchView>
+        <ListView
+            android:id="@+id/listViewSearch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/searchView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <Button
             android:id="@+id/filter"

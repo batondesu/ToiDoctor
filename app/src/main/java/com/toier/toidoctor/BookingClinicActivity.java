@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.toier.toidoctor.controller.BookingController;
+import com.toier.toidoctor.Controller.BookingController;
 import com.toier.toidoctor.R.id;
 import com.toier.toidoctor.R.layout;
 import java.text.SimpleDateFormat;

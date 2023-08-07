@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.toier.toidoctor.controller.MainHomeController;
+import com.toier.toidoctor.Controller.MainHomeController;
 
 
 public class MainHomeActivity extends AppCompatActivity {

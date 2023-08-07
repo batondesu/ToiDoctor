@@ -1,4 +1,4 @@
-package com.toier.toidoctor.controller;
+package com.toier.toidoctor.Controller;
 
 import android.content.Context;
 import android.util.Log;
@@ -35,7 +35,7 @@ public class BookingController {
 
                                     //get thong tin doctor
                                     Doctor doctor = new Doctor();
-                                    doctor.setDoctor_ID(document.get("ID").toString());
+                                    doctor.setID(document.get("ID").toString());
                                     doctor.setAbout_doctor(document.get("about_doctor").toString());
                                     doctor.setName(document.get("name").toString());
                                     doctor.setMajor(document.get("major").toString());
