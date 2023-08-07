@@ -5,16 +5,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.google.android.gms.tasks.*;
+import com.google.firebase.firestore.*;
 import com.toier.toidoctor.Doctor;
+
+import com.google.firebase.Timestamp;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -29,7 +24,8 @@ public class BookingController {
     }
 
     // Phương thức này để lấy thông tin Doctor từ Firestore
-    public void getDoctorData(String doctorId, com.toier.toidoctor.controllers.BookingController.OnDoctorDataListener listener) {
+    public static void getDoctorData(String doctorId, OnDoctorDataListener listener) {
+        //Log.d("TEST_", "co");
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Doctors")
                 .whereEqualTo("ID", doctorId)
@@ -60,7 +56,7 @@ public class BookingController {
                                     doctor.setExp((int) res1);
                                     long res2 = document.getLong("patient");
                                     doctor.setPatient((int) res2);
-
+                                    //Log.d("TEST_", "co");
                                     listener.onDoctorDataReceived(doctor);
                                     //Log.d("XXX", doctor.getName().toString());
                                 }
@@ -90,22 +86,23 @@ public class BookingController {
         user.put("doctor_id", doctorId);
         user.put("patient_id", patientId);
         user.put("time", time);
+        user.put("notice", false);
 
         // Add a new document with a generated ID
         db.collection("Appointments")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("TAG", "Error adding document", e);
-                    }
-                });
+            .add(user)
+            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.w("TAG", "Error adding document", e);
+                }
+            });
     }
 
 
@@ -126,20 +123,6 @@ public class BookingController {
         Timestamp timestamp = new Timestamp(date);
 
         return timestamp;
-    }
-
-    public void addDoctorData() {
-        //name,  major,  review,  rate,  ID,  address,  hospital_name,  about_doctor,  exp,  patient
-        AddBacSi("Cao Xuân Dũng", "Phụ khoa", 99, 4.1, "13" , "2B, ngõ 25, Phạm Thuận Duật", "Bệnh viện Mai Dịch" , "uy tín", 7,203);
-        AddBacSi("Lê Thạch Lâm", "Tâm lý", 67, 4.7, "14" , "Nguyễn Chí Thanh, Láng Thượng, Đống Đa", "Bệnh viện Bạch Mai" , "Đăng C - Hiếu Hoàng", 7,163);
-        AddBacSi("Nguyễn Trung Kiên", "Ngoại khoa", 197, 4.9, "15" , "Nguyễn Trãi, Thanh Xuân Trung, Thanh Xuân", "Bệnh viện Thanh Xuân" , "giàu", 8,503);
-        AddBacSi("Lưu Trường Giang", "Nam khoa", 8, 3.9, "16" , "Văn Quán, Hà Đông", "Bệnh viện Thanh Xuân" , "Láng Lọ, giỏi làm", 11,20);
-        AddBacSi("Nguyễn Quang Huy", "Thể chất", 200, 4.6, "17" , "207 Giải Phóng, Đồng Tâm, Hai Bà Trưng", "Bệnh viện Cầu Giấy" , "người đàn ông chung thủy, có 10 cho 10", 12,403);
-        AddBacSi("Nguyễn Văn Nam", "Phục hồi chức năng", 77, 4.9, "18" , "Phố Trần Đại Nghĩa, Hai Bà Trưng", "Bệnh viện Ba Đình" , "lương y như từ mâu, người thầy thuốc tài giỏi", 8,150);
-        AddBacSi("Phùng Thanh Đăng", "Cấp cứu", 301, 4.0, "19" , "Phố Trần Đại Nghĩa, Hai Bà Trưng", "Bệnh viện Ba Đình" , "con bố Long", 5,603);
-        AddBacSi("Trần Như Long", "Truyền nhiễm", 123, 4.2, "20" , "136 Phạm Văn Đồng, Xuân Đỉnh, Bắc Từ Liêm", "Bệnh viện Cổ Nhuế" , "nhiều bạn ỏ Tài Chính", 5,246);
-
-
     }
 
     public void AddBacSi(String name, String major, int review, double rate, String ID, String address, String hospital_name, String about_doctor, int exp, int patient) {
@@ -175,4 +158,5 @@ public class BookingController {
                     }
                 });
     }
+
 }

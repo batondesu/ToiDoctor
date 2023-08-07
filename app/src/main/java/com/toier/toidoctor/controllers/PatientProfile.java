@@ -2,16 +2,27 @@ package com.toier.toidoctor.controllers;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.toier.toidoctor.R;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class PatientProfile {
-    private static ArrayList<Patient> patients = new ArrayList<Patient>();
+
+    private static ArrayList<Patient> Patients = new ArrayList<Patient>();
 
     public static Button createButton(Context context, Button btnTag, String id , String name) {
         btnTag.setCompoundDrawablesWithIntrinsicBounds(R.drawable.profile_icon, 0, 0, 0);
@@ -49,4 +60,39 @@ public class PatientProfile {
         btnTag.setTag(tagString);
         return btnTag;
     }
+
+    public static void getPatient() {
+        JSONObject dataJson = new JSONObject();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+//      Lấy thông tin bệnh nhân
+        db.collection("Users")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                    //Log.d("ABC", document.getId() + " => " + document.getData());
+                                    Patient eachPatient = new Patient();
+                                    eachPatient.setId(document.getId());
+                                    eachPatient.setBirthday(String.valueOf(document.getData().get("birthday")));
+                                    eachPatient.setName(String.valueOf(document.getData().get("name")));
+                                    eachPatient.setPhoneNumber(String.valueOf(document.getData().get("phoneNumber")));
+                                    Patients.add(eachPatient);
+                            }
+                            Log.d("ABC", Patients.get(1).getName());
+
+
+
+                        } else {
+                            Log.d("ABC", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+
+
+    }
+
 }

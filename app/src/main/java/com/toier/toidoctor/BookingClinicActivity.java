@@ -20,9 +20,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.gms.tasks.*;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.*;
+import com.toier.toidoctor.controllers.BookingController;
 import com.toier.toidoctor.R.id;
 import com.toier.toidoctor.R.layout;
-import com.toier.toidoctor.controllers.BookingController;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -158,7 +158,7 @@ public class BookingClinicActivity extends AppCompatActivity {
                                 }
 
                             } else {
-                                //listener.onDoctorDataError("Không tìm thấy thông tin Doctor");
+                                Log.d("AAA", "vvv");
                             }
                         } else {
                             //listener.onDoctorDataError("Lỗi khi lấy dữ liệu từ Firestore");
@@ -208,12 +208,18 @@ public class BookingClinicActivity extends AppCompatActivity {
         LinearLayout linearLayout1 = findViewById(id.parent_layout1);
         int childCount1 = linearLayout1.getChildCount();
 
-        for (int j = 0 ; j < childCount1 ; ++j){
+        for (int j = 0 ; j < childCount1 ; ++j) {
             ConstraintLayout layout1 = (ConstraintLayout) linearLayout1.getChildAt(j);
             TextView text1 = (TextView) layout1.getChildAt(1);
             View view1 = (View) layout1.getChildAt(0);
-            view1.setBackgroundResource(R.drawable.rectangle10);
-            text1.setTextColor(getResources().getColor(R.color.black));
+            if ( check[date + now][j] == 0) {
+                view1.setBackgroundResource(R.drawable.rectangle10);
+                text1.setTextColor(getResources().getColor(R.color.black));
+            } else {
+                view1.setBackgroundResource(R.drawable.rectangle7);
+                text1.setTextColor(getResources().getColor(R.color.gray_2));
+                layout1.setClickable(false);
+            }
         }
 
         for (int j = 0 ; j < childCount1 ; ++j){
@@ -221,12 +227,7 @@ public class BookingClinicActivity extends AppCompatActivity {
             ConstraintLayout layout1 = (ConstraintLayout) linearLayout1.getChildAt(j);
             TextView text1 = (TextView) layout1.getChildAt(1);
             View view1 = (View) layout1.getChildAt(0);
-            if (check[date + now][j] == 1) {
-                view1.setBackgroundResource(R.drawable.rectangle7);
-                text1.setTextColor(getResources().getColor(R.color.gray_2));
-                Log.d("XXX", String.format("%d %d %d",now, now1, check[date+now][now1]));
-            }
-            else {
+            if (check[date + now][j] != 1) {
                 layout1.setOnClickListener(new View.OnClickListener(){
                     public void onClick(View v) {
 
